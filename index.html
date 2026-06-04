@@ -138,7 +138,9 @@ h2.t{color:var(--jade);font-size:24px;margin-bottom:4px}
 /* growth page (merged) */
 .lvlbar{background:linear-gradient(120deg,#eaf4fd,#f5fafe);border:1px solid var(--line);border-radius:14px;padding:16px 18px;margin-bottom:18px}
 .lvlbar .row{display:flex;justify-content:space-between;align-items:center;font-weight:800;color:var(--jade)}
-.lvlbar .lvlname{font-size:17px}.lvlbar .next{font-size:12.5px;color:var(--muted);font-weight:600}
+.lvlbar .lvltop{display:flex;align-items:center;gap:16px}
+.lvlbig{height:92px;width:auto;object-fit:contain;flex:0 0 auto;filter:drop-shadow(0 5px 10px rgba(20,136,224,.22))}
+.lvlbar .lvlname{font-size:22px;font-weight:800;color:var(--jade)}.lvlbar .next{font-size:13px;color:var(--muted);font-weight:700;margin-top:3px}
 .lvlbar .barwrap{height:12px;background:#d8e6f2;border-radius:7px;margin-top:10px;overflow:hidden}
 .lvlbar .barwrap>span{display:block;height:100%;background:linear-gradient(90deg,var(--jade2),var(--amber));width:0;transition:.5s}
 .bgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
@@ -157,19 +159,19 @@ h2.t{color:var(--jade);font-size:24px;margin-bottom:4px}
 
 /* sticker album */
 .album{display:flex;flex-wrap:wrap;gap:14px;margin-top:10px}
-.sticker{width:84px;text-align:center}
-.slot{width:84px;height:84px;border-radius:18px;display:flex;align-items:center;justify-content:center;background:#fff;border:2px dashed #d3c5a2;position:relative}
+.sticker{width:100px;text-align:center}
+.slot{width:100px;height:100px;border-radius:20px;display:flex;align-items:center;justify-content:center;background:#fff;border:2px dashed #d3c5a2;position:relative}
 .slot.got{border:none;background:transparent}
 .slot.got.r1{transform:rotate(-5deg)}.slot.got.r2{transform:rotate(4deg)}.slot.got.r3{transform:rotate(-2deg)}
 .empty{font-size:24px;color:#cdbf9c;font-weight:800}
-.avawrap{position:relative;width:74px;height:74px;filter:drop-shadow(0 3px 4px rgba(0,0,0,.22))}
-.avawrap svg{display:block;width:74px;height:74px}
+.avawrap{position:relative;width:88px;height:88px;filter:drop-shadow(0 3px 5px rgba(0,0,0,.22))}
+.avawrap svg{display:block;width:88px;height:88px}
 .emblem{position:absolute;right:-3px;bottom:-3px;background:#fff;border-radius:50%;font-size:13px;width:24px;height:24px;display:flex;align-items:center;justify-content:center;box-shadow:0 1px 3px rgba(0,0,0,.25)}
 .slbl{font-size:11.5px;margin-top:7px;color:#5b5648;font-weight:700;line-height:1.2}
-.stamp{width:74px;height:74px;border-radius:14px;background:#fff;border:2.5px solid var(--red);color:var(--red);font-weight:800;font-size:14px;display:flex;align-items:center;justify-content:center;text-align:center;line-height:1.15;padding:5px;box-shadow:0 3px 4px rgba(0,0,0,.18)}
-.vflower{width:74px;height:74px;border-radius:50%;background:radial-gradient(circle at 50% 38%,#fff,#eef5f0);border:2.5px solid var(--jade2);display:flex;flex-direction:column;align-items:center;justify-content:center;color:var(--jade);font-size:12px;font-weight:800;box-shadow:0 3px 4px rgba(0,0,0,.18)}
+.stamp{width:88px;height:88px;border-radius:16px;background:#fff;border:2.5px solid var(--red);color:var(--red);font-weight:800;font-size:16px;display:flex;align-items:center;justify-content:center;text-align:center;line-height:1.15;padding:6px;box-shadow:0 3px 5px rgba(0,0,0,.18)}
+.vflower{width:88px;height:88px;border-radius:50%;background:radial-gradient(circle at 50% 38%,#fff,#eef5f0);border:2.5px solid var(--jade2);display:flex;flex-direction:column;align-items:center;justify-content:center;color:var(--jade);font-size:13px;font-weight:800;box-shadow:0 3px 5px rgba(0,0,0,.18)}
 .vflower .fl{font-size:22px;line-height:1}
-.bookst{width:60px;height:74px;border-radius:4px 9px 9px 4px;display:flex;align-items:flex-end;justify-content:center;color:#fff;font-size:10px;font-weight:800;text-align:center;padding:6px 5px;line-height:1.12;box-shadow:3px 3px 5px rgba(0,0,0,.22);border-left:5px solid rgba(255,255,255,.4)}
+.bookst{width:72px;height:88px;border-radius:4px 10px 10px 4px;display:flex;align-items:flex-end;justify-content:center;color:#fff;font-size:11px;font-weight:800;text-align:center;padding:7px 6px;line-height:1.12;box-shadow:3px 3px 6px rgba(0,0,0,.22);border-left:6px solid rgba(255,255,255,.4)}
 
 .bpop{background:var(--cream);border-radius:22px;max-width:380px;width:100%;padding:34px 30px;text-align:center;position:relative;overflow:hidden}
 .bpop .glow{position:absolute;inset:-40% 0 auto 0;height:240px;background:radial-gradient(circle at 50% 0,rgba(224,161,60,.4),transparent 70%)}
@@ -260,6 +262,36 @@ h2.t{color:var(--jade);font-size:24px;margin-bottom:4px}
 .bcap .tag.year{background:#fdeaea;color:#c0392b}
 .bcap .tag.prev{background:#fff3d8;color:#9a6b1c}
 .bcap .tag.addon{background:#efeaf8;color:#7a5aa6}
+/* 成長週報 */
+.repbox{background:#fff;border-radius:18px;max-width:540px;width:100%;max-height:92vh;overflow:auto;position:relative;box-shadow:0 24px 60px rgba(0,0,0,.4)}
+.rep-head{background:linear-gradient(135deg,#1593ee,#0e63ad);color:#fff;padding:22px 24px;position:relative}
+.rep-head .x{position:absolute;top:12px;right:14px;font-size:22px;background:rgba(255,255,255,.2);color:#fff;border:none;border-radius:50%;width:30px;height:30px;cursor:pointer}
+.rep-kicker{font-size:12px;font-weight:800;letter-spacing:1px;opacity:.9}
+.rep-title{font-size:23px;font-weight:800;margin-top:3px}
+.rep-date{font-size:12px;color:#dcefff;margin-top:3px}
+.rep-body{padding:20px 24px}
+.rep-hi{font-size:14px;color:#3a4b59;margin-bottom:14px}
+.rep-stats{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-bottom:18px}
+.rep-stats .rs{background:#eaf4fd;border-radius:12px;padding:14px 8px;text-align:center}
+.rep-stats .n{font-size:26px;font-weight:800;color:var(--jade)}
+.rep-stats .l{font-size:12px;color:#5f7585;margin-top:2px}
+.rep-sec{margin-bottom:16px;padding-bottom:14px;border-bottom:1px solid var(--line)}
+.rep-h{font-size:14px;font-weight:800;color:var(--jade);margin-bottom:8px}
+.rep-line{font-size:13.5px;color:#3a3a33;margin:5px 0}
+.rep-line .rk{display:inline-block;width:92px;color:var(--gold);font-weight:700}
+.rep-lvl{display:flex;align-items:center;gap:14px}
+.rep-lvl img{height:64px;width:auto;filter:drop-shadow(0 3px 6px rgba(20,136,224,.2))}
+.rl-name{font-size:16px;font-weight:800;color:var(--jade)}
+.rl-next{font-size:12.5px;color:var(--muted);margin:3px 0 6px}
+.rl-bar{height:9px;background:#e4eef7;border-radius:6px;overflow:hidden;max-width:240px}
+.rl-bar>span{display:block;height:100%;background:linear-gradient(90deg,var(--jade2),var(--amber))}
+.rep-badges{display:flex;gap:10px;flex-wrap:wrap}
+.rep-badges span{background:#fff7e6;border:1px solid #f0dcae;color:#9a6b1c;font-size:13px;font-weight:700;padding:6px 13px;border-radius:20px}
+.rep-rec{background:#f6faff;border:1px solid #dcebf8;border-radius:10px;padding:11px 14px;margin:8px 0}
+.rep-rec b{font-size:13.5px;color:#21303c;display:block}
+.rep-rec small{font-size:12px;color:#5f7585}
+.rep-cta{margin:18px 0 10px}
+.rep-foot{font-size:11.5px;color:#a59c86;text-align:center}
 /* PDF preview */
 .pdfbox{background:#fff;border-radius:16px;max-width:920px;width:100%;height:90vh;display:flex;flex-direction:column;position:relative;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.4)}
 .pdfbox .x{position:absolute;top:10px;right:12px;font-size:22px;line-height:1;background:#0a2540;color:#fff;border:none;border-radius:50%;width:34px;height:34px;cursor:pointer;z-index:3}
@@ -295,14 +327,26 @@ h2.t{color:var(--jade);font-size:24px;margin-bottom:4px}
 .ws-foot .ws-dl{background:var(--amber);color:#21303c;border:none;font-weight:800;padding:11px 22px;border-radius:11px;cursor:pointer;font-size:14px}
 .ws-foot .ws-dl:hover{background:#e0a206}
 /* growth ladder + co-learning */
-.lvls{display:flex;align-items:flex-start;justify-content:center;flex-wrap:wrap;gap:4px;margin-top:10px}
-.lvl-node{text-align:center;width:138px;padding:0 4px}
-.lvl-node .ring{width:66px;height:66px;border-radius:50%;margin:0 auto;display:flex;align-items:center;justify-content:center;font-size:30px;background:linear-gradient(160deg,#eaf4fd,#d8ecfb);border:2px solid var(--amber);box-shadow:0 4px 10px rgba(224,161,60,.18)}
-.lvl-node.top .ring{background:linear-gradient(160deg,#e0a13c,#c9803a);border-color:#b06f23}
+.lvls{display:flex;align-items:flex-start;justify-content:center;flex-wrap:nowrap;gap:2px;margin-top:10px;overflow-x:auto}
+.lvl-node{text-align:center;width:140px;flex:0 0 auto;padding:0 2px}
+.lvl-node .ring{width:auto;height:108px;margin:0 auto 2px;display:flex;align-items:center;justify-content:center}
+.lvl-node .ring img{height:108px;width:auto;object-fit:contain;display:block;filter:drop-shadow(0 5px 10px rgba(20,136,224,.20))}
+.lvl-node.top .ring img{height:122px}
+.lvlic{height:22px;width:22px;object-fit:contain;vertical-align:-5px;margin-right:3px}
 .lvl-node .nm{font-weight:800;color:var(--jade);font-size:14px;margin-top:9px}
 .lvl-node .th{font-size:11.5px;color:var(--muted);margin-top:2px}
-.lvl-arrow{align-self:flex-start;margin-top:24px;color:var(--gold);font-weight:800;font-size:20px}
-@media(max-width:620px){.lvl-arrow{display:none}.lvl-node{width:46%}}
+.lvl-arrow{align-self:flex-start;margin-top:24px;color:var(--gold);font-weight:800;font-size:20px;flex:0 0 auto}
+@media(max-width:620px){.lvl-node{width:auto;min-width:62px}.lvl-node .ring,.lvl-node .ring img{height:62px}.lvl-node.top .ring img{height:70px}.lvl-arrow{margin-top:18px;font-size:14px}.lvl-node .nm{font-size:11px}}
+/* 貼紙展示 section */
+.sticker-show{max-width:680px;margin:6px auto 0;border-radius:18px;overflow:hidden;box-shadow:0 14px 36px rgba(20,136,224,.16);border:1px solid var(--line)}
+.sticker-show img{display:block;width:100%;height:auto}
+.sticker-duo{display:grid;grid-template-columns:1fr 1fr;gap:18px;max-width:780px;margin:8px auto 0}
+@media(max-width:680px){.sticker-duo{grid-template-columns:1fr}}
+.sticker-card{position:relative;background:#fff;border:1px solid var(--line);border-radius:16px;overflow:hidden;box-shadow:0 12px 30px rgba(20,136,224,.14)}
+.sticker-card img{display:block;width:100%;height:auto}
+.sticker-card .cardlabel{padding:11px 14px;font-size:13px;font-weight:800;color:var(--jade);border-top:1px solid var(--line);text-align:center}
+.sticker-ribbon{position:absolute;top:15px;right:-40px;background:linear-gradient(135deg,#e2433a,#c0392b);color:#fff;font-size:12px;font-weight:800;letter-spacing:.5px;padding:6px 46px;transform:rotate(45deg);z-index:2;box-shadow:0 3px 8px rgba(0,0,0,.25)}
+.figsticker{width:96px;height:96px;object-fit:contain;display:block;filter:drop-shadow(0 4px 6px rgba(0,0,0,.22))}
 .coearn{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:10px}
 @media(max-width:760px){.coearn{grid-template-columns:1fr 1fr}}
 .coearn .ce{background:linear-gradient(180deg,#eaf4fd,#f6fbff);border:1px solid #cfe2f2;border-radius:14px;padding:18px 14px;text-align:center}
@@ -315,7 +359,6 @@ h2.t{color:var(--jade);font-size:24px;margin-bottom:4px}
 <div class="appbar">
   <span class="logo">樂學小書包<small>V2 · 貼紙收集冊</small></span>
   <span class="spacer"></span>
-  <span class="steplabel" id="steplabel">STEP 1 · 系列櫥窗</span>
   <span class="medalcount" onclick="openGrowth()">🏅 <b id="ptCount">0</b> 枚 · 收集冊</span>
   <span class="acct" id="acct">未訂閱</span>
 </div>
@@ -358,10 +401,10 @@ h2.t{color:var(--jade);font-size:24px;margin-bottom:4px}
         <div class="bcard"><div class="bribbon">年訂專享</div><img src="benefit_growthbook.png" alt="小書包成長冊" loading="lazy">
           <div class="bcap"><span class="bt">小書包成長冊（PDF 作業彙編）</span><span class="tag year">年訂專享</span></div></div>
         <div class="bcard"><img src="benefit_giftbox.png" alt="實體成長禮盒" loading="lazy">
-          <div class="bcap"><span class="bt">實體成長禮盒</span><span class="tag addon">另購 · $49</span></div></div>
+          <div class="bcap"><span class="bt">實體成長禮盒</span><span class="tag addon">另購 $49 · 年訂價 $39</span></div></div>
       </div>
       <div style="text-align:center;margin-top:20px"><button class="btn primary" style="width:auto;display:inline-block;padding:11px 24px" onclick="openWSDemo()">👀 看一張繪本作業長什麼樣</button></div>
-      <p style="text-align:center;font-size:12px;color:#a59c86;margin-top:14px">※ 影片課程、繪本作業依購買範圍提供（訂閱與課程包共享）；小書包成長冊（PDF 作業彙編）為年訂閱專享；實體成長禮盒為選購加購（$49，不含於訂閱）。</p>
+      <p style="text-align:center;font-size:12px;color:#a59c86;margin-top:14px">※ 影片課程、繪本作業依購買範圍提供（訂閱與課程包共享）；小書包成長冊（PDF 作業彙編）為年訂閱專享；實體成長禮盒為選購加購（$49；年訂閱會員優惠價 $39）。</p>
     </div>
 
     <!-- LANDING: 成長體系（帶走什麼 + 等級路線 + 親子共學） -->
@@ -376,18 +419,27 @@ h2.t{color:var(--jade);font-size:24px;margin-bottom:4px}
       </div>
 
       <div style="margin-top:40px">
-        <div class="sub-h">📈 一步步升級：從小書僮，到小書包狀元</div>
-        <div class="lp-hsub">每完成一張繪本作業就前進一步，集滿即解鎖新等級、勳章與貼紙。</div>
+        <div class="sub-h">📈 從小書僮，升到小書包狀元</div>
+        <div class="lp-hsub">完成繪本作業就升級。</div>
         <div class="lvls">
-          <div class="lvl-node"><div class="ring">📕</div><div class="nm">小書僮</div><div class="th">起點</div></div>
+          <div class="lvl-node"><div class="ring"><img src="level1.png" alt="小書僮"></div><div class="nm">小書僮</div></div>
           <div class="lvl-arrow">→</div>
-          <div class="lvl-node"><div class="ring">📗</div><div class="nm">故事小學士</div><div class="th">完成 3 張</div></div>
+          <div class="lvl-node"><div class="ring"><img src="level2.png" alt="故事小學士"></div><div class="nm">故事小學士</div></div>
           <div class="lvl-arrow">→</div>
-          <div class="lvl-node"><div class="ring">📘</div><div class="nm">博學少年</div><div class="th">完成 8 張</div></div>
+          <div class="lvl-node"><div class="ring"><img src="level3.png" alt="博學少年"></div><div class="nm">博學少年</div></div>
           <div class="lvl-arrow">→</div>
-          <div class="lvl-node"><div class="ring">📙</div><div class="nm">小書包學士</div><div class="th">完成 15 張</div></div>
+          <div class="lvl-node"><div class="ring"><img src="level4.png" alt="小書包學士"></div><div class="nm">小書包學士</div></div>
           <div class="lvl-arrow">→</div>
-          <div class="lvl-node top"><div class="ring">👑</div><div class="nm">小書包狀元</div><div class="th">完成 25 張</div></div>
+          <div class="lvl-node top"><div class="ring"><img src="level5.png" alt="小書包狀元"></div><div class="nm">小書包狀元</div></div>
+        </div>
+      </div>
+
+      <div style="margin-top:40px">
+        <div class="sub-h">🧸 孩子最愛：收集歷史人物、成語與品德貼紙</div>
+        <div class="lp-hsub">完成作業就能蒐集貼紙、貼進收集冊——越集越上癮，孩子自己追著學。</div>
+        <div class="sticker-duo">
+          <div class="sticker-card"><img src="collect_online.png" alt="App 內線上收集貼紙" loading="lazy"><div class="cardlabel">📱 App 內・線上收集</div></div>
+          <div class="sticker-card"><div class="sticker-ribbon">實體成長禮盒</div><img src="collect_stickers.png" alt="實體貼紙包與收集冊" loading="lazy"><div class="cardlabel">📦 實體貼紙・貼進成長冊</div></div>
         </div>
       </div>
 
@@ -397,7 +449,7 @@ h2.t{color:var(--jade);font-size:24px;margin-bottom:4px}
         <div class="coearn">
           <div class="ce"><div class="em">💬</div><h5>親子共讀題</h5><p>每張繪本作業都附給家長的延伸提問</p></div>
           <div class="ce"><div class="em">📝</div><h5>家長充電站</h5><p>教養方法短片，陪孩子一起成長</p></div>
-          <div class="ce"><div class="em">📬</div><h5>成長週報</h5><p>每週告訴你孩子學會了什麼</p></div>
+          <div class="ce" onclick="openReport()" style="cursor:pointer"><div class="em">📬</div><h5>成長週報</h5><p>每週告訴你孩子學會了什麼<br><b style="color:var(--gold)">點我預覽</b></p></div>
           <div class="ce"><div class="em">🏅</div><h5>一起貼貼紙</h5><p>線上集點、線下貼進實體成長冊</p></div>
         </div>
       </div>
@@ -417,7 +469,6 @@ h2.t{color:var(--jade);font-size:24px;margin-bottom:4px}
     <!-- LANDING: 家長回饋 -->
     <div class="lp-sec">
       <div class="lp-h">家長怎麼說</div>
-      <div class="lp-hsub">（以下為情境示意，供提案參考）</div>
       <div class="lp-quotes">
         <div class="quote">「孩子現在睡前主動要求聽故事，隔天還會跟我複述劇情。」<div class="who">— 5 歲孩子的媽媽</div></div>
         <div class="quote">「成語課很實用，孩子寫作文會用成語了，學校老師也稱讚。」<div class="who">— 小三家長</div></div>
@@ -434,7 +485,7 @@ h2.t{color:var(--jade);font-size:24px;margin-bottom:4px}
           <ul class="ul"><li>單一系列完整解鎖</li><li>含全系列繪本作業 PDF</li><li>永久擁有，無時限</li><li>適合先試水溫</li></ul>
           <button class="pbtn line" onclick="subscribe('課程包')">選購課程包</button></div>
         <div class="tier feat"><span class="pill">最划算</span><h4>年訂閱</h4><div class="amt">$88<small>/年</small></div>
-          <ul class="ul"><li>全 6 線 150 集免廣告</li><li>全套繪本作業（每集一張）</li><li>小書包成長冊（150 份作業彙編）</li><li>成長任務・勳章・收集冊</li><li>🎁 實體成長禮盒寄到家</li></ul>
+          <ul class="ul"><li>全 6 線 150 集免廣告</li><li>全套繪本作業（每集一張）</li><li>小書包成長冊（150 份作業彙編）</li><li>成長任務・勳章・收集冊</li><li>🎁 實體成長禮盒可優惠加購 $39（寄到家）</li></ul>
           <button class="pbtn solid" onclick="subscribe('年訂閱')">開始 7 天免費試用</button></div>
         <div class="tier"><h4>月訂閱</h4><div class="amt">$9.99<small>/月</small></div>
           <ul class="ul"><li>全 6 線暢看</li><li>含全套繪本作業</li><li>低門檻入場</li><li>隨時取消</li></ul>
@@ -477,7 +528,7 @@ h2.t{color:var(--jade);font-size:24px;margin-bottom:4px}
   </div>
 </div>
 
-<div class="legend">原型說明：每集配一張繪本作業 PDF；完成後該集的人物・成語・品德・名著自動成為「貼紙」收進收集冊（數位貼紙可對應實體貼紙包，貼進《小書包成長冊》）。人物頭像於正式版由各節目角色美術裁切，此處為示意。</div>
+
 
 <!-- PAYWALL -->
 <div class="overlay" id="paywall"><div class="modal">
@@ -505,6 +556,46 @@ h2.t{color:var(--jade);font-size:24px;margin-bottom:4px}
   <div class="pdf-foot"><span>繪本作業・實際範例（清風正氣）</span>
     <span style="display:flex;gap:10px"><a id="pdfOpen" href="#" target="_blank" class="pdf-link">在新分頁開啟</a>
     <a id="pdfDl" href="#" download class="pdf-dl">⬇ 下載 PDF</a></span></div>
+</div></div>
+
+<!-- 成長週報預覽 -->
+<div class="overlay" id="reportModal"><div class="repbox">
+  <div class="rep-head"><button class="x" onclick="close_('reportModal')">×</button>
+    <div class="rep-kicker">📬 本週成長週報</div>
+    <div class="rep-title">小明的這一週</div>
+    <div class="rep-date">2026/6/1 – 6/7 · 樂學小書包</div></div>
+  <div class="rep-body">
+    <p class="rep-hi">親愛的家長您好 👋 這是小明本週的學習成長：</p>
+    <div class="rep-stats">
+      <div class="rs"><div class="n">4</div><div class="l">完成繪本作業</div></div>
+      <div class="rs"><div class="n">2</div><div class="l">新增勳章</div></div>
+      <div class="rs"><div class="n">6</div><div class="l">收集貼紙</div></div>
+    </div>
+    <div class="rep-sec">
+      <div class="rep-h">📖 這一週學到了</div>
+      <div class="rep-line"><span class="rk">👤 認識人物</span>藺相如、廉頗、司馬光</div>
+      <div class="rep-line"><span class="rk">🧩 學會成語</span>完璧歸趙、負荊請罪</div>
+      <div class="rep-line"><span class="rk">💎 內化品德</span>仁義守信、智慧機智</div>
+    </div>
+    <div class="rep-sec">
+      <div class="rep-h">📈 等級進度</div>
+      <div class="rep-lvl"><img src="level2.png" alt=""><div>
+        <div class="rl-name">故事小學士</div>
+        <div class="rl-next">再完成 3 張 → 博學少年</div>
+        <div class="rl-bar"><span style="width:62%"></span></div></div></div>
+    </div>
+    <div class="rep-sec">
+      <div class="rep-h">🏅 本週新勳章</div>
+      <div class="rep-badges"><span>🌱 第一份作業</span><span>🔥 勤學章</span></div>
+    </div>
+    <div class="rep-sec">
+      <div class="rep-h">👀 推薦下週一起看</div>
+      <div class="rep-rec"><b>完璧歸趙：藺相如怎麼智取秦王？</b><small>✨ 故事小書包 · 認識藺相如，學成語「完璧歸趙」</small></div>
+      <div class="rep-rec"><b>七歲的司馬光救了小夥伴一命</b><small>🌙 晚安小書包 · 認識司馬光，學會冷靜機智</small></div>
+    </div>
+    <div class="rep-cta"><button class="btn primary" style="width:100%" onclick="close_('reportModal');openGrowth()">打開孩子的收集冊看看 →</button></div>
+    <div class="rep-foot">樂學小書包 · 乾淨樂學　|　每週日寄送，可隨時於設定關閉</div>
+  </div>
 </div></div>
 
 <!-- WORKSHEET PREVIEW (繪本作業 mockup) -->
@@ -614,7 +705,7 @@ Object.keys(EPDATA).forEach(function(k){if(SERIES[k])SERIES[k].eps=EPDATA[k];});
 const HW_STEPS=[["🎯","聽前・好奇鉤子","封面圖＋開放式提問，帶著問題聽故事。"],["💬","聽後・三問理解","發生什麼／角色為何／如果是你，三層提問。"],
  ["🔤","語文・字詞卡","成語/生字/好句卡，附例句與描紅。"],["🌟","品德・反思格","一句話反思＋自評星等。"],
  ["🎨","創作・手作任務","畫場景或續寫結局，進成長冊。"],["👨‍👩‍👧","親子・共讀指引","給家長 3 提問＋1 生活實踐。"]];
-const LEVELS=[{n:0,name:"小書僮",ic:"📕"},{n:3,name:"故事小學士",ic:"📗"},{n:8,name:"博學少年",ic:"📘"},{n:15,name:"小書包學士",ic:"📙"},{n:25,name:"小書包狀元",ic:"👑"}];
+const LEVELS=[{n:0,name:"小書僮",ic:'<img class="lvlic" src="level1.png" alt="">'},{n:3,name:"故事小學士",ic:'<img class="lvlic" src="level2.png" alt="">'},{n:8,name:"博學少年",ic:'<img class="lvlic" src="level3.png" alt="">'},{n:15,name:"小書包學士",ic:'<img class="lvlic" src="level4.png" alt="">'},{n:25,name:"小書包狀元",ic:'<img class="lvlic" src="level5.png" alt="">'}];
 const MILESTONES=[{id:"first",ic:"🌱",name:"第一份作業",desc:"完成你的第一張繪本作業",need:1},{id:"three",ic:"🔥",name:"勤學章",desc:"完成 3 張繪本作業",need:3},
  {id:"ten",ic:"⭐",name:"好學不倦",desc:"完成 10 張繪本作業",need:10},{id:"twenty",ic:"🏆",name:"博覽群書",desc:"完成 20 張繪本作業",need:20}];
 const SERIES_MEDAL={moon:{ic:"🌙",name:"晚安守護章"},story:{ic:"✨",name:"故事探險章"},idiom:{ic:"📚",name:"成語達人章"},wise:{ic:"📖",name:"博學通識章"},bi:{ic:"🌏",name:"雙語橋樑章"},parent:{ic:"📝",name:"親子共學章"}};
@@ -678,7 +769,7 @@ function collected(kind){const set=new Set();
 
 function toast(m){const t=document.getElementById('toast');t.textContent=m;t.classList.add('on');clearTimeout(t._t);t._t=setTimeout(()=>t.classList.remove('on'),2400);}
 function go(v){document.querySelectorAll('.view').forEach(e=>e.classList.remove('on'));document.getElementById('view-'+v).classList.add('on');window.scrollTo(0,0);
-  document.getElementById('steplabel').textContent=v==='store'?'STEP 1 · 系列櫥窗':'STEP 2 · 系列頁';}
+  (document.getElementById('steplabel')||{}).textContent=v==='store'?'STEP 1 · 系列櫥窗':'STEP 2 · 系列頁';}
 function close_(id){document.getElementById(id).classList.remove('on');}
 
 const sg=document.getElementById('storeGrid');
@@ -715,7 +806,7 @@ function renderInfo(){const s=SERIES[curKey];const c=s.grad.match(/#[0-9a-f]{6}/
        <div style="font-weight:800;color:var(--jade);font-size:15px;margin-bottom:6px">📖 系列簡介</div>
        <p style="font-size:14px;color:#544f44;margin:0">${s.about}</p></div>
      <div class="promise" style="--lc:${c}"><div class="ph"><span class="nm">學完「${s.nm.replace(/^.. /,'')}」你的孩子會獲得</span></div>${rows}</div>
-     <p style="font-size:12.5px;color:#a59c86;margin-top:10px">※ 本系列全部 ${s.eps.length} 集的實際彙整。完成每集即可收集對應的人物／成語／品德／名著貼紙。</p>`;}
+     <p style="font-size:12.5px;color:#a59c86;margin-top:10px">完成每集，即可收集對應的人物、成語、品德與名著貼紙。</p>`;}
 
 function renderEps(){const s=SERIES[curKey];
   document.getElementById('pane-eps').innerHTML=s.eps.map((e,i)=>{
@@ -741,6 +832,7 @@ function renderHw(){const locked=!unlocked;
 
 function dlPdf(){toast('⬇ 繪本作業 PDF 下載中…');try{window.open('worksheet-spec.html','_blank');}catch(e){}}
 function dlNow(){toast('⬇ 繪本作業 PDF 下載中…');try{window.open('worksheet-spec.html','_blank');}catch(e){}}
+function openReport(){document.getElementById('reportModal').classList.add('on');}
 function openWSDemo(){var pdf='sample_worksheet.pdf';
   document.getElementById('pdfFrame').src=pdf;
   document.getElementById('pdfDl').href=pdf;
@@ -771,10 +863,10 @@ function openWS(i,key){const s=SERIES[key||curKey],e=s.eps[i];const c=s.grad;
   document.getElementById('wsModal').classList.add('on');}
 function openPreview(i){const s=SERIES[curKey];const idx=(typeof i==='number')?i:0;if(idx>=5&&!unlocked){openPaywall();return;}
   document.getElementById('pmTitle').textContent=s.eps[idx].t;document.getElementById('playerModal').classList.add('on');}
-function openPaywall(){document.getElementById('steplabel').textContent='STEP 3 · 購買解鎖';document.getElementById('paywall').classList.add('on');}
+function openPaywall(){(document.getElementById('steplabel')||{}).textContent='STEP 3 · 購買解鎖';document.getElementById('paywall').classList.add('on');}
 function subscribe(plan){unlocked=true;close_('paywall');
   document.getElementById('acct').textContent='已訂閱 · '+plan;document.getElementById('acct').style.background='var(--amber)';
-  document.getElementById('steplabel').textContent='STEP 4 · 完成作業・集貼紙';
+  (document.getElementById('steplabel')||{}).textContent='STEP 4 · 完成作業・集貼紙';
   var _hb=document.getElementById('hintbox'); if(_hb)_hb.innerHTML='✅ 已用「'+plan+'」解鎖！';
   renderStore();if(curKey){renderEps();renderSeriesProg();tab('eps');}toast('🎉 解鎖成功（'+plan+'）');}
 function tab(t){document.querySelectorAll('.tab').forEach(e=>e.classList.toggle('on',e.dataset.tab===t));
@@ -801,9 +893,10 @@ function rotc(i){return 'r'+((i%3)+1);}
 function renderGrowth(){
   const L=curLevel(),nx=nextLevel();
   const cf=collected('fig'),ci=collected('idiom'),cv=collected('val'),cc=collected('cls');
-  document.getElementById('gcSummary').innerHTML=`孩子已完成 <b>${totalDone()}</b> 張作業 · 目前 <b>${L.ic} ${L.name}</b> · 已收集 ${cf.length+ci.length+cv.length+cc.length} 張貼紙`;
+  document.getElementById('gcSummary').innerHTML=`孩子已完成 <b>${totalDone()}</b> 張作業 · 目前 <b>${L.name}</b> · 已收集 ${cf.length+ci.length+cv.length+cc.length} 張貼紙`;
   // badges
-  let html=`<div class="lvlbar"><div class="row"><span class="lvlname">${L.ic} ${L.name}</span><span class="next">${nx?('再完成 '+(nx.n-totalDone())+' 張 → '+nx.name):'已達最高等級 👑'}</span></div>
+  let html=`<div class="lvlbar"><div class="lvltop">${L.ic.replace('lvlic','lvlbig')}
+      <div class="lvlinfo"><div class="lvlname">${L.name}</div><div class="next">${nx?('再完成 '+(nx.n-totalDone())+' 張 → '+nx.name):'已達最高等級！👑'}</div></div></div>
     <div class="barwrap"><span style="width:${nx?Math.min(100,Math.round((totalDone()-L.n)/(nx.n-L.n)*100)):100}%"></span></div></div>`;
   const bcell=(got,ic,nm,bd)=>`<div class="badge ${got?'earned':'lockedb'}">${got?'<span class="got">GET</span>':''}<div class="face">${ic}</div><div class="bn">${nm}</div><div class="bd">${bd}</div></div>`;
   html+=`<div class="section-h">🎖 勳章<span class="cnt">里程碑 + 系列徽章</span></div><div class="bgrid">`
@@ -811,12 +904,16 @@ function renderGrowth(){
     +Object.keys(SERIES).map(k=>bcell(seriesDone(k)===SERIES[k].eps.length,SERIES_MEDAL[k].ic,SERIES_MEDAL[k].name,seriesDone(k)+'/'+SERIES[k].eps.length+' 集')).join('')
     +`</div>`;
   // sticker albums
-  html+=`<div class="divider"></div><div class="section-h">📒 貼紙收集冊</div>
-    <div class="pcallout">💡 <b>實體貼紙產品：</b>數位完成的每張貼紙，都可對應一張<b>實體貼紙</b>，孩子撕下來貼進《小書包成長冊》——線上看影片做作業、線下集貼紙，收集的成就感看得見也摸得到。</div>`;
-  // figures (avatar stickers)
-  html+=`<div class="section-h">👤 歷史人物頭像貼紙<span class="cnt">${cf.length}/${ALL_FIG.length}</span></div><div class="album">`
-    +ALL_FIG.map((n,i)=>{const got=cf.includes(n);
-      return `<div class="sticker"><div class="slot ${got?'got '+rotc(i):''}">${got?`<div class="avawrap">${avatarSVG(n)}<span class="emblem">${emblemOf(n)}</span></div>`:'<span class="empty">？</span>'}</div><div class="slbl">${got?n:'未解鎖'}</div></div>`;}).join('')
+  html+=`<div class="divider"></div><div class="section-h">📒 貼紙收集冊</div>`;
+  // figures：有實體插畫貼紙的人物優先、以實圖呈現（示範款）；其餘維持頭像/未解鎖
+  var FIG_IMG={'諸葛亮':'fig_zhugeliang.png','孔融':'fig_kongrong.png','岳飛':'fig_yuefei.png','王羲之':'fig_wangxizhi.png','花木蘭':'fig_huamulan.png'};
+  var realFigs=Object.keys(FIG_IMG);
+  var figList=realFigs.concat(ALL_FIG.filter(function(f){return !FIG_IMG[f];}));
+  var figGot=figList.filter(function(n){return FIG_IMG[n]||cf.includes(n);}).length;
+  html+=`<div class="section-h">👤 歷史人物貼紙<span class="cnt">${figGot}/${figList.length}</span></div><div class="album">`
+    +figList.map((n,i)=>{var real=FIG_IMG[n];var got=real?true:cf.includes(n);
+      var inner=real?`<img class="figsticker" src="${real}" alt="${n}">`:(got?`<div class="avawrap">${avatarSVG(n)}<span class="emblem">${emblemOf(n)}</span></div>`:'<span class="empty">？</span>');
+      return `<div class="sticker"><div class="slot ${got?'got '+rotc(i):''}">${inner}</div><div class="slbl">${got?n:'未解鎖'}</div></div>`;}).join('')
     +`</div>`;
   // idioms (stamp stickers)
   html+=`<div class="section-h">🧩 成語貼紙<span class="cnt">${ci.length}/${ALL_IDIOM.length}</span></div><div class="album">`
