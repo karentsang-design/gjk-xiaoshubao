@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>樂學小書包 · 繪本作業系統 規格與樣本</title>
+<style>
+:root{--jade:#1f6b4f;--jade2:#2e8b6b;--gold:#c9803a;--amber:#e0a13c;--red:#c0392b;
+  --ink:#2b2b29;--cream:#faf6ee;--cream2:#f3ecdd;--line:#e4dcc8;--muted:#6f6a5d;--paper:#fffdf8;}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:"PingFang TC","Microsoft JhengHei","Noto Sans TC",sans-serif;background:var(--cream);color:var(--ink);line-height:1.7}
+.wrap{max-width:1000px;margin:0 auto;padding:0 22px}
+.hero{background:linear-gradient(150deg,#1f6b4f,#143f2e);color:#fdf8ec;padding:60px 0 48px;border-bottom:6px solid var(--amber)}
+.hero .eyebrow{color:var(--amber);font-weight:800;letter-spacing:3px;font-size:12px;margin-bottom:12px}
+.hero h1{font-size:38px;letter-spacing:2px}
+.hero p{color:#e9e2cf;max-width:680px;margin-top:12px}
+section{padding:56px 0;border-bottom:1px solid var(--line)}
+.eyebrow{color:var(--gold);font-weight:800;letter-spacing:3px;font-size:12px;text-transform:uppercase;margin-bottom:10px}
+h2.sec{font-size:26px;color:var(--jade);margin-bottom:6px}
+.sub{color:var(--muted);max-width:760px;margin-bottom:26px}
+.grid{display:grid;gap:16px}.g2{grid-template-columns:1fr 1fr}.g3{grid-template-columns:repeat(3,1fr)}
+@media(max-width:760px){.g2,.g3{grid-template-columns:1fr}}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:22px}
+.card h3{color:var(--jade);font-size:17px;margin-bottom:8px}
+.card .big{font-size:30px;font-weight:800;color:var(--gold)}
+table{width:100%;border-collapse:collapse;background:var(--paper);border:1px solid var(--line);border-radius:12px;overflow:hidden;font-size:14px}
+th,td{padding:11px 13px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}
+th{background:var(--jade);color:#fdf8ec}tr:nth-child(even) td{background:#fbf7ee}tr:last-child td{border-bottom:none}
+.callout{background:linear-gradient(180deg,#fff8e9,#fdf3da);border:1px solid #ecd9a8;border-left:5px solid var(--amber);border-radius:10px;padding:16px 20px;margin:20px 0}
+.callout b{color:var(--gold)}
+.badge{display:inline-block;background:var(--cream2);color:#5b5648;font-size:12px;font-weight:700;padding:3px 11px;border-radius:12px;margin-right:6px}
+
+/* worksheet sample */
+.sheet{background:#fff;border:1px solid var(--line);border-radius:14px;padding:0;overflow:hidden;box-shadow:0 8px 30px rgba(31,107,79,.10);margin-top:8px}
+.sheet .pg{padding:30px 34px;border-bottom:2px dashed var(--line)}
+.sheet .pg:last-child{border-bottom:none}
+.pgtag{float:right;font-size:11px;color:#a59c86;font-weight:700}
+.sh-head{display:flex;align-items:center;gap:14px;border-bottom:3px solid var(--gold);padding-bottom:12px;margin-bottom:18px}
+.sh-head .mark{font-size:30px}
+.sh-head .ttl{font-size:20px;font-weight:800;color:var(--jade)}
+.sh-head .meta{font-size:12px;color:var(--muted)}
+.sh-line{display:flex;gap:8px;align-items:baseline;margin:6px 0}
+.q{margin:16px 0}
+.q .lab{display:inline-block;background:var(--jade);color:#fff;font-size:12px;font-weight:800;padding:3px 10px;border-radius:10px;margin-bottom:7px}
+.writeline{border-bottom:1.5px dotted #c9bfa6;height:26px;margin:7px 0}
+.box{border:1.5px solid var(--line);border-radius:10px;padding:14px;min-height:90px;background:#fdfbf5}
+.cardrow{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:6px}
+@media(max-width:600px){.cardrow{grid-template-columns:1fr}}
+.wordcard{border:1.5px solid #ecd2a0;background:#fffdf6;border-radius:10px;padding:12px 14px}
+.wordcard .w{font-size:18px;font-weight:800;color:var(--gold)}
+.wordcard .py{font-size:12px;color:#a08a5e}
+.wordcard .ex{font-size:13px;color:#544f44;margin-top:5px}
+.wordcard .trace{font-size:22px;color:#e0d6bf;letter-spacing:8px;margin-top:8px}
+.stars{font-size:22px;color:#e0c98a;letter-spacing:4px}
+.draw{border:1.5px solid var(--line);border-radius:10px;height:150px;background:repeating-linear-gradient(45deg,#fdfbf5,#fdfbf5 12px,#f7f1e4 12px,#f7f1e4 24px);display:flex;align-items:center;justify-content:center;color:#c3b896;font-size:13px}
+.parent{background:#eef5f0;border:1px solid #cfe3d6;border-radius:10px;padding:16px}
+.parent h4{color:var(--jade);font-size:14px;margin-bottom:6px}
+.parent ul{margin:0 0 0 18px;font-size:13.5px;color:#3f5a4c}
+.flow{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:8px}
+.flow .node{background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:8px 14px;font-size:13px;font-weight:700;color:#544f44}
+.flow .arr{color:var(--gold);font-weight:800}
+.note{font-size:12px;color:#a59c86;margin-top:8px}
+.print{font-size:13px;color:var(--jade);font-weight:700;border:2px solid var(--jade);background:none;padding:9px 18px;border-radius:10px;cursor:pointer}
+@media print{.noprint{display:none}body{background:#fff}.sheet{box-shadow:none}}
+</style>
+</head>
+<body>
+
+<div class="hero"><div class="wrap">
+  <div class="eyebrow">PICTURE-BOOK HOMEWORK SYSTEM</div>
+  <h1>繪本作業系統 · 規格與樣本</h1>
+  <p>把「聽過故事」變成「學會素養」。本文件定義作業的數量原則、頁數、結構與呈現方式，並附一份完整樣本作業單。</p>
+</div></div>
+
+<!-- 模型 -->
+<section><div class="wrap">
+  <div class="eyebrow">核心模型</div>
+  <h2 class="sec">兩層結構：一集一份「作業卡」＋ 一系列一本「成長冊」</h2>
+  <p class="sub">不是「一主題一套」，也不是「一集一大本」。我們用<b>輕量單集卡</b>降低每集製作與孩子完成的負擔，再用<b>系列成長冊</b>製造累積感與續訂黏著——兩層各司其職。</p>
+  <div class="grid g2">
+    <div class="card" style="border-top:4px solid var(--gold)">
+      <span class="badge">第一層</span><h3>單集作業卡（一集一份）</h3>
+      <p class="big">2 頁</p>
+      <p>每一集對應一份雙面 A4 作業卡（線上可互動填寫、亦可下載列印）。6 大固定模塊，<b>5–10 分鐘</b>可完成，剛好是一集故事後的沉澱時間。</p>
+    </div>
+    <div class="card" style="border-top:4px solid var(--jade2)">
+      <span class="badge">第二層</span><h3>系列成長冊（一系列一本）</h3>
+      <p class="big">16–24 頁</p>
+      <p>完成整個系列後，所有作業卡＋封面＋進度地圖＋徽章頁＋家長回顧，自動集結成一本可列印的 PDF 成長冊，是孩子的學習成果與家長的「我有好好教」憑證。</p>
+    </div>
+  </div>
+  <div class="callout"><b>為什麼這樣切？</b>「一主題一套」會讓單集失去即時反饋、孩子聽完無事可做；「一集一大本」製作成本與完成壓力過高、傷續訂。<b>輕單集 + 重彙整</b>兼顧製作效率、孩子體驗與家長價值感。</div>
+</div></section>
+
+<!-- 數量與頁數 -->
+<section><div class="wrap">
+  <div class="eyebrow">數量與規模</div>
+  <h2 class="sec">要做多少？</h2>
+  <div class="grid g3">
+    <div class="card"><h3>單集作業卡</h3><p class="big">150 份</p><p>對應 150 集，各 2 頁。但採<b>6 套版型</b>（每產品線一套）模板化生產，實際設計工作＝6 版型 + 內容填充。</p></div>
+    <div class="card"><h3>系列成長冊</h3><p class="big">6 本</p><p>六條產品線各一本，由該線作業卡自動彙編，額外設計封面 / 地圖 / 徽章頁。</p></div>
+    <div class="card"><h3>版型模板</h3><p class="big">6 套</p><p>晚安／故事／成語／博學／雙語／家長各一套版型，定義配色、模塊權重與字級（依年齡調整）。</p></div>
+  </div>
+  <table style="margin-top:18px">
+    <thead><tr><th>產品線</th><th>適齡</th><th>單集卡重點模塊</th><th>頁數</th></tr></thead>
+    <tbody>
+      <tr><td>🌙 晚安小書包</td><td>4–9</td><td>圖多字少、情緒貼紙、塗色、親子共讀為主</td><td>2 頁（含一面塗畫）</td></tr>
+      <tr><td>✨ 故事小書包</td><td>7–12</td><td>三問理解＋好句卡＋續寫創作</td><td>2 頁</td></tr>
+      <tr><td>📚 成語小書包</td><td>6–12</td><td>成語卡（5–6 個）＋造句＋閱讀素養討論</td><td>2 頁（可加 1 頁成語練習）</td></tr>
+      <tr><td>📖 博學小書包</td><td>9–15</td><td>思辨提問＋主題延伸研究＋觀點寫作</td><td>2 頁</td></tr>
+      <tr><td>🌏 雙語小書包</td><td>6–12</td><td>中英字卡＋聽力填空＋朗讀打卡</td><td>2 頁</td></tr>
+      <tr><td>📝 家長充電站</td><td>家長</td><td>教養要點＋本週共讀提問清單（非孩子作業）</td><td>1 頁速記</td></tr>
+    </tbody>
+  </table>
+</div></section>
+
+<!-- 呈現方式 -->
+<section><div class="wrap">
+  <div class="eyebrow">如何呈現</div>
+  <h2 class="sec">三種形態，一份內容</h2>
+  <div class="grid g3">
+    <div class="card"><h3>① App 內互動</h3><p>看完即彈出作業卡：點選作答、拖曳配對、錄音朗讀、手指塗色。完成即<b>集點＋解鎖徽章</b>。</p></div>
+    <div class="card"><h3>② 下載列印 PDF</h3><p>偏好紙本的家庭可下載 A4 列印，孩子手寫手畫，呼應傳統「書包作業本」的儀式感。</p></div>
+    <div class="card"><h3>③ 成長冊彙編</h3><p>系列完成後自動生成 PDF 成長冊，可線上翻閱或列印裝訂，作為成果與紀念。</p></div>
+  </div>
+  <div class="flow">
+    <span class="node">看完一集</span><span class="arr">→</span>
+    <span class="node">作業卡（互動/列印）</span><span class="arr">→</span>
+    <span class="node">完成集點・得徽章</span><span class="arr">→</span>
+    <span class="node">系列完成</span><span class="arr">→</span>
+    <span class="node">生成成長冊 PDF</span>
+  </div>
+  <p class="note">作業完成度與徽章數可在家長後台檢視，把「學習成效」變得可見——這是續訂與口碑分享的關鍵。</p>
+</div></section>
+
+<!-- 樣本 -->
+<section><div class="wrap">
+  <div class="eyebrow">樣本作業單</div>
+  <h2 class="sec">範例：晚安小書包〈孔融讓梨〉</h2>
+  <p class="sub">以下為一份完整的雙面單集作業卡示意（4–9 歲版型）。正式版會配插畫與互動元件。</p>
+  <button class="print noprint" onclick="window.print()">🖨 列印 / 存成 PDF</button>
+
+  <div class="sheet">
+    <!-- PAGE 1 -->
+    <div class="pg">
+      <span class="pgtag">小書包作業卡 · 第 1 / 2 頁</span>
+      <div class="sh-head">
+        <span class="mark">🍐</span>
+        <div><div class="ttl">孔融為什麼挑最小的梨子？</div>
+        <div class="meta">🌙 晚安小書包 · 4–9 歲 · 品德修養 · 約 5 分鐘</div></div>
+      </div>
+
+      <div class="q"><span class="lab">🎯 聽前・好奇鉤子</span>
+        <p>如果桌上有一盤梨子，有大有小，你會先拿哪一個呢？為什麼？</p>
+        <div class="writeline"></div>
+      </div>
+
+      <div class="q"><span class="lab">💬 聽後・三問理解</span>
+        <div class="sh-line"><b>1.</b> 故事裡發生了什麼事？</div><div class="writeline"></div>
+        <div class="sh-line"><b>2.</b> 孔融為什麼要挑最小的梨子？</div><div class="writeline"></div>
+        <div class="sh-line"><b>3.</b> 如果是你，你會怎麼分梨子給家人？</div><div class="writeline"></div>
+      </div>
+
+      <div class="q"><span class="lab">🔤 語文・好詞卡</span>
+        <div class="cardrow">
+          <div class="wordcard"><span class="w">謙讓</span> <span class="py">qiān ràng</span>
+            <div class="ex">例：哥哥把座位<b>謙讓</b>給了妹妹。</div><div class="trace">謙　讓</div></div>
+          <div class="wordcard"><span class="w">孝順</span> <span class="py">xiào shùn</span>
+            <div class="ex">例：孔融是個<b>孝順</b>又懂事的孩子。</div><div class="trace">孝　順</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PAGE 2 -->
+    <div class="pg">
+      <span class="pgtag">小書包作業卡 · 第 2 / 2 頁</span>
+
+      <div class="q"><span class="lab">🌟 品德・反思格</span>
+        <p>這個故事教我的一句話：</p>
+        <div class="box"></div>
+        <p style="margin-top:10px">我今天有沒有「先想到別人」呢？　給自己評分：<span class="stars">☆ ☆ ☆ ☆ ☆</span></p>
+      </div>
+
+      <div class="q"><span class="lab">🎨 創作・畫畫看</span>
+        <p>畫出孔融把大梨子讓給哥哥的那一刻：</p>
+        <div class="draw">在這裡畫畫 ✎</div>
+      </div>
+
+      <div class="parent">
+        <h4>👨‍👩‍👧 親子・共讀指引（給家長）</h4>
+        <ul>
+          <li>延伸提問：「讓給別人的時候，你心裡是什麼感覺？」</li>
+          <li>生活實踐：今天找一次機會，和家人練習「先讓一下」。</li>
+          <li>想更深入？到「家長充電站 · 培養孩子思考力」看 3 分鐘短片。</li>
+        </ul>
+      </div>
+
+      <div style="text-align:center;margin-top:18px;font-size:13px;color:#a08a5e">
+        完成這份作業卡 → 蓋一枚 <b style="color:var(--gold)">🏅 謙讓徽章</b> → 收進你的《晚安小書包成長冊》
+      </div>
+    </div>
+  </div>
+  <p class="note">樣本字級、留白與「圖多字少」為 4–9 歲版型；7–12 / 9–15 版型會增加書寫量與思辨深度，雙語版型加入中英字卡與朗讀打卡。</p>
+</div></section>
+
+<div class="wrap" style="padding:36px 22px 70px;color:var(--muted);font-size:13px;text-align:center">
+  樂學小書包 · 繪本作業系統　|　單集作業卡 ×150（6 版型）＋ 系列成長冊 ×6
+</div>
+</body>
+</html>

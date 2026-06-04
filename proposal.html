@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>樂學小書包 · New IP Proposal</title>
+<style>
+:root{
+  --jade:#1f6b4f; --jade2:#2e8b6b; --gold:#c9803a; --amber:#e0a13c;
+  --red:#c0392b; --ink:#2b2b29; --cream:#faf6ee; --cream2:#f3ecdd;
+  --line:#e4dcc8; --muted:#6f6a5d; --paper:#fffdf8;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:"PingFang TC","Microsoft JhengHei","Noto Sans TC",sans-serif;
+  color:var(--ink);background:var(--cream);line-height:1.75;font-size:16px}
+.wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+h1,h2,h3{line-height:1.3;font-weight:800;letter-spacing:.5px}
+section{padding:74px 0;border-bottom:1px solid var(--line)}
+.eyebrow{color:var(--gold);font-weight:800;letter-spacing:3px;font-size:13px;text-transform:uppercase;margin-bottom:14px}
+h2.sec{font-size:30px;color:var(--jade);margin-bottom:8px}
+.sec-sub{color:var(--muted);font-size:16px;margin-bottom:34px;max-width:760px}
+p{margin-bottom:14px}
+
+/* hero */
+.hero{background:
+   radial-gradient(1200px 500px at 80% -10%, rgba(224,161,60,.18), transparent 60%),
+   linear-gradient(160deg,#1f6b4f 0%, #18573f 60%, #123f2e 100%);
+   color:#fdf8ec;padding:96px 0 80px;border-bottom:6px solid var(--amber)}
+.hero .badge{display:inline-block;border:1px solid rgba(253,248,236,.4);color:#f6e7c5;
+   padding:6px 16px;border-radius:30px;font-size:13px;letter-spacing:2px;margin-bottom:24px}
+.hero h1{font-size:52px;letter-spacing:4px;margin-bottom:10px}
+.hero .zh-sub{font-size:21px;color:#f1dfb8;font-weight:600;margin-bottom:26px}
+.hero .lead{font-size:18px;max-width:680px;color:#e9e2cf}
+.hero .meta{margin-top:40px;display:flex;gap:42px;flex-wrap:wrap}
+.hero .meta div span{display:block;font-size:34px;font-weight:800;color:var(--amber)}
+.hero .meta div small{color:#d8cfb6;letter-spacing:1px}
+
+/* stat cards */
+.grid{display:grid;gap:18px}
+.g4{grid-template-columns:repeat(4,1fr)}
+.g3{grid-template-columns:repeat(3,1fr)}
+.g2{grid-template-columns:repeat(2,1fr)}
+@media(max-width:860px){.g4,.g3,.g2{grid-template-columns:1fr 1fr}}
+@media(max-width:560px){.g4,.g3,.g2{grid-template-columns:1fr} .hero h1{font-size:38px}}
+.stat{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:22px;
+  box-shadow:0 2px 0 var(--cream2)}
+.stat .num{font-size:30px;font-weight:800;color:var(--jade)}
+.stat .lbl{color:var(--muted);font-size:14px;margin-top:4px}
+.stat .src{color:#a59c86;font-size:11px;margin-top:8px}
+
+.card{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:24px}
+.card h3{color:var(--jade);font-size:18px;margin-bottom:10px}
+.callout{background:linear-gradient(180deg,#fff8e9,#fdf3da);border:1px solid #ecd9a8;
+  border-left:5px solid var(--amber);border-radius:10px;padding:18px 22px;margin:22px 0}
+.callout b{color:var(--gold)}
+
+table{width:100%;border-collapse:collapse;font-size:14.5px;background:var(--paper);
+  border:1px solid var(--line);border-radius:12px;overflow:hidden}
+th,td{padding:12px 14px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}
+th{background:var(--jade);color:#fdf8ec;font-weight:700;letter-spacing:.5px}
+tr:last-child td{border-bottom:none}
+tr:nth-child(even) td{background:#fbf7ee}
+.tag{display:inline-block;padding:2px 9px;border-radius:20px;font-size:12px;font-weight:700;color:#fff}
+
+/* persona */
+.persona{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:22px;border-top:4px solid var(--gold)}
+.persona h3{font-size:17px;color:var(--ink);margin-bottom:2px}
+.persona .who{color:var(--gold);font-size:13px;font-weight:700;margin-bottom:12px}
+.persona ul{list-style:none;font-size:14px}
+.persona li{padding:5px 0 5px 20px;position:relative;color:#544f44}
+.persona li:before{content:"›";position:absolute;left:2px;color:var(--jade2);font-weight:800}
+
+/* line cards */
+.lines{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+@media(max-width:760px){.lines{grid-template-columns:1fr}}
+.lcard{background:var(--paper);border:1px solid var(--line);border-left:6px solid var(--lc);
+  border-radius:12px;padding:20px}
+.lcard-top{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:6px}
+.lcard-name{font-size:19px;font-weight:800;color:var(--lc)}
+.lcard-age{font-size:13px;font-weight:700;background:var(--cream2);padding:3px 10px;border-radius:20px;color:#5b5648}
+.lcard-tag{color:var(--muted);font-size:13.5px;margin-bottom:8px}
+.lcard-n{font-size:13px;color:#8a8270}
+.lcard-n b{font-size:22px;color:var(--ink)}
+.lcard-blurb{font-size:13.5px;color:#544f44;margin-top:10px;margin-bottom:0}
+
+/* ladder */
+.ladder{display:flex;flex-direction:column;gap:10px;margin-top:10px}
+.rung{display:flex;align-items:center;gap:16px;background:var(--paper);border:1px solid var(--line);
+  border-radius:10px;padding:12px 18px}
+.rung .age{min-width:78px;font-weight:800;color:var(--jade)}
+.rung .bar{height:14px;border-radius:7px;background:linear-gradient(90deg,var(--jade2),var(--amber))}
+.rung .lbl{font-size:14px;color:#544f44}
+
+/* homework */
+.hw-steps{counter-reset:s;display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+@media(max-width:760px){.hw-steps{grid-template-columns:1fr}}
+.hw{background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:20px;position:relative}
+.hw:before{counter-increment:s;content:counter(s);position:absolute;top:-14px;left:18px;
+  width:30px;height:30px;border-radius:50%;background:var(--gold);color:#fff;font-weight:800;
+  display:flex;align-items:center;justify-content:center;font-size:15px}
+.hw h4{color:var(--jade);font-size:15.5px;margin:6px 0 8px}
+.hw p{font-size:13.5px;color:#544f44;margin:0}
+
+/* pricing */
+.price{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+@media(max-width:760px){.price{grid-template-columns:1fr}}
+.ptier{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:26px;text-align:center;position:relative}
+.ptier.feat{border:2px solid var(--amber);box-shadow:0 10px 30px rgba(201,128,58,.18)}
+.ptier .pill{position:absolute;top:-13px;left:50%;transform:translateX(-50%);background:var(--amber);
+  color:#fff;font-size:12px;font-weight:800;padding:4px 14px;border-radius:20px}
+.ptier h3{color:var(--ink);font-size:18px}
+.ptier .amt{font-size:36px;font-weight:800;color:var(--jade);margin:8px 0}
+.ptier .amt small{font-size:15px;color:var(--muted);font-weight:600}
+.ptier ul{list-style:none;text-align:left;font-size:14px;margin-top:14px}
+.ptier li{padding:6px 0 6px 22px;position:relative;color:#544f44;border-bottom:1px dashed var(--line)}
+.ptier li:before{content:"✓";position:absolute;left:0;color:var(--jade2);font-weight:800}
+
+/* funnel / roadmap */
+.road{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+@media(max-width:760px){.road{grid-template-columns:1fr 1fr}}
+.rstep{background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:18px;border-top:4px solid var(--jade2)}
+.rstep .ph{font-size:12px;font-weight:800;letter-spacing:1px;color:var(--gold)}
+.rstep h4{color:var(--jade);font-size:15px;margin:4px 0 8px}
+.rstep p{font-size:13px;color:#544f44;margin:0}
+
+/* appendix interactive */
+.filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px}
+.fbtn{border:1px solid var(--line);background:var(--paper);color:#5b5648;padding:7px 15px;border-radius:22px;
+  cursor:pointer;font-size:13.5px;font-weight:600;transition:.15s}
+.fbtn:hover{border-color:var(--jade2)}
+.fbtn.on{background:var(--jade);color:#fff;border-color:var(--jade)}
+#count{color:var(--muted);font-size:13px;margin-bottom:10px}
+#eptbl td a{color:var(--jade);text-decoration:none;font-weight:600}
+#eptbl td a:hover{text-decoration:underline}
+.bar-cell{display:flex;align-items:center;gap:8px}
+.bar-cell .b{height:9px;border-radius:5px;background:var(--jade2);min-width:3px}
+.foot{padding:50px 0;text-align:center;color:var(--muted);font-size:13px}
+.toc{position:sticky;top:0;background:rgba(250,246,238,.95);backdrop-filter:blur(6px);
+  border-bottom:1px solid var(--line);z-index:20;padding:12px 0}
+.toc .wrap{display:flex;gap:6px;flex-wrap:wrap;font-size:13px}
+.toc a{color:#5b5648;text-decoration:none;padding:5px 11px;border-radius:18px;font-weight:600}
+.toc a:hover{background:var(--cream2);color:var(--jade)}
+.note{font-size:12.5px;color:#a59c86;margin-top:8px}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="wrap">
+    <span class="badge">NEW IP PROPOSAL · 乾淨樂學</span>
+    <h1>樂學小書包</h1>
+    <div class="zh-sub">LeXue Schoolbag — 給孩子的一座有體系的故事學堂</div>
+    <p class="lead">把 150 集授權內容，重組為一套分齡、分主題、可付費訂閱的兒童文化啟蒙課程；
+       以「聽故事 → 學素養 → 繪本作業」閉環，打造家長願意長期續訂的成長型產品。</p>
+    <div class="meta">
+      <div><span>150</span><small>嚴選課程集數</small></div>
+      <div><span>6</span><small>分齡產品線</small></div>
+      <div><span>4–15</span><small>覆蓋年齡（歲）</small></div>
+      <div><span>9</span><small>素養主題軸</small></div>
+    </div>
+  </div>
+</div>
+
+<div class="toc"><div class="wrap">
+  <a href="#summary">摘要</a><a href="#market">市場分析</a><a href="#audience">人群研究</a>
+  <a href="#bench">對標產品</a><a href="#position">IP 定位</a><a href="#assets">資產盤點</a>
+  <a href="#curriculum">課程體系</a><a href="#homework">繪本作業</a><a href="#biz">商業模式</a>
+  <a href="#roadmap">上線路線</a><a href="#appendix">完整片單</a>
+</div></div>
+
+<!-- SUMMARY -->
+<section id="summary"><div class="wrap">
+  <div class="eyebrow">Executive Summary</div>
+  <h2 class="sec">一句話：把一個 YouTube 風格的故事頻道，升級成一套會員制的兒童素養學堂</h2>
+  <p class="sec-sub">我們手上有 150 集已驗證受歡迎的中文兒童文化內容（總曝光逾百萬）。它們目前散落為單集影片，缺乏分齡、分級與作業閉環——這正是「能看」與「願意付費訂閱」之間的鴻溝。</p>
+  <div class="grid g3">
+    <div class="card"><h3>痛點</h3><p>現況是「一集一集看」，家長無法判斷適齡、看完沒有沉澱、學習成效不可見，因此只值免費，不值訂閱。</p></div>
+    <div class="card"><h3>解法</h3><p>重組為 6 條分齡產品線、9 條素養主題軸，每集配新標題與「繪本作業單」，形成可衡量的成長路徑。</p></div>
+    <div class="card"><h3>變現</h3><p>沿用乾淨樂學現有機制：SVOD 月訂 $9.99 / 年訂 $88（免廣告），並行 TVOD 課程包單買，雙軌轉化。</p></div>
+  </div>
+  <div class="callout"><b>核心主張：</b>樂學小書包不是「更多影片」，而是「孩子聽得進、家長看得到成長、學校用得上」的乾淨內容學堂——這是值得每月付費的理由。</div>
+</div></section>
+
+<!-- MARKET -->
+<section id="market"><div class="wrap">
+  <div class="eyebrow">Market Analysis</div>
+  <h2 class="sec">市場分析：兒童教育娛樂訂閱正處於高速成長期</h2>
+  <p class="sec-sub">全球兒童「教育＋娛樂」串流與 App 市場規模持續雙位數成長，亞太區增速領先；華語家長對「優質、安全、有教育價值」內容的付費意願明確上升。</p>
+  <div class="grid g4">
+    <div class="stat"><div class="num">$8.16B</div><div class="lbl">兒童教育娛樂串流市場（2025）</div><div class="src">CAGR 13.4%</div></div>
+    <div class="stat"><div class="num">$2.1B</div><div class="lbl">兒童 App 市場（2025）</div><div class="src">2034 上看 $17.6B，CAGR 26.7%</div></div>
+    <div class="stat"><div class="num">最快</div><div class="lbl">亞太區為增速最高地區</div><div class="src">區域 CAGR 約 10%+</div></div>
+    <div class="stat"><div class="num">百萬+</div><div class="lbl">本片庫已累積曝光</div><div class="src">內部數據 · 150 集嚴選</div></div>
+  </div>
+  <div class="grid g3" style="margin-top:18px">
+    <div class="card"><h3>結構性順風</h3><p>智慧裝置普及、家長數位素養提升、學校重視閱讀素養，三股力量同時推升「在家也能學」的優質中文內容需求。</p></div>
+    <div class="card"><h3>內容安全焦慮</h3><p>家長對演算法推薦、廣告與不當內容高度警覺。「乾淨、無廣告、價值觀正向」正是本 IP 的天然護城河。</p></div>
+    <div class="card"><h3>傳統文化缺口</h3><p>主流平台西式內容為主，優質、成體系的中華傳統文化兒童內容供給稀缺——這是我們最大的差異化空間。</p></div>
+  </div>
+</div></section>
+
+<!-- AUDIENCE -->
+<section id="audience"><div class="wrap">
+  <div class="eyebrow">Audience Research</div>
+  <h2 class="sec">人群研究：誰會付費，為什麼付費</h2>
+  <p class="sec-sub">付費決策者是家長，使用者是孩子。我們同時設計「孩子愛聽」與「家長覺得值」兩條滿足線，並以三類核心家長畫像驅動定位。</p>
+  <div class="grid g3">
+    <div class="persona"><div class="who">核心客群 · 約 40%</div><h3>文化傳承型媽媽</h3>
+      <ul><li>35–45 歲，孩子 4–9 歲</li><li>希望孩子保有中文與品德根基</li><li>反感低俗、廣告與螢幕成癮</li><li>付費點：乾淨、傳統文化、睡前陪伴</li></ul></div>
+    <div class="persona"><div class="who">成長客群 · 約 35%</div><h3>素養焦慮型家長</h3>
+      <ul><li>孩子 6–12 歲，重視學校表現</li><li>關注閱讀素養、成語、寫作</li><li>願為「看得到的學習成效」買單</li><li>付費點：成語課＋繪本作業＋雙語</li></ul></div>
+    <div class="persona"><div class="who">機會客群 · 約 25%</div><h3>海外華語家庭</h3>
+      <ul><li>身處非華語環境，怕孩子失根</li><li>需要結構化中文學習資源</li><li>對年訂閱、課程包接受度高</li><li>付費點：分齡體系＋雙語橋接</li></ul></div>
+  </div>
+  <div class="callout"><b>洞察：</b>家長不是在買「影片」，而是在買「我有在好好教孩子」的安心感。所以產品必須讓家長<b>看見體系、看見成長、看見參與</b>——這正是繪本作業與家長充電站的角色。</div>
+</div></section>
+
+<!-- BENCHMARK -->
+<section id="bench"><div class="wrap">
+  <div class="eyebrow">Competitive Benchmark</div>
+  <h2 class="sec">對標產品：定價與結構參照</h2>
+  <p class="sec-sub">我們的訂閱定價（$9.99/月、$88/年）與國際領先產品 Epic! 幾乎一致，落在成熟付費帶；差異化來自「中華傳統文化＋繪本作業閉環＋乾淨無廣告」。</p>
+  <table>
+    <thead><tr><th>產品</th><th>定位</th><th>定價（約）</th><th>結構特點</th><th>對我們的啟示</th></tr></thead>
+    <tbody>
+      <tr><td><b>凱叔講故事</b></td><td>3–12 歲音頻故事龍頭（陸）</td><td>會員制 / 課程單買並行</td><td>5 萬+ 內容、四大會員板塊、IP 化原創</td><td>分板塊會員＋精品 IP 是成熟打法</td></tr>
+      <tr><td><b>Epic!</b></td><td>兒童閱讀 App（美）</td><td>$9.99/月・$84.99/年</td><td>4 萬+ 書與影音、4 童帳號、7 天試用</td><td>定價帶一致；多童帳號＋試用是標配</td></tr>
+      <tr><td><b>親子天下有聲書</b></td><td>華語親子內容（台）</td><td>月訂 / 年訂</td><td>每月上架約 100 則、編輯精選</td><td>「定期上新」維持續訂動機</td></tr>
+      <tr><td><b>SeeMi / FunPark</b></td><td>5–12 歲影音互動（台）</td><td>讀享包訂閱</td><td>互動內容＋家長後台</td><td>家長可視化後台提升付費感</td></tr>
+      <tr style="background:#f3f9f5"><td><b>樂學小書包</b></td><td>4–15 歲中華文化素養學堂</td><td><b>$9.99/月・$88/年</b></td><td>6 分齡線＋繪本作業＋雙語＋家長站</td><td>以「體系＋作業閉環」做出差異</td></tr>
+    </tbody>
+  </table>
+  <p class="note">資料來源：各產品官方頁面與公開市場報告（2025）。完整連結見文末參考來源。</p>
+</div></section>
+
+<!-- POSITION -->
+<section id="position"><div class="wrap">
+  <div class="eyebrow">IP Positioning</div>
+  <h2 class="sec">IP 定位：乾淨樂學旗下的「分齡文化素養學堂」</h2>
+  <div class="grid g2">
+    <div class="card"><h3>品牌一句話</h3>
+      <p style="font-size:18px;color:var(--gold);font-weight:700">「聽得進的故事，學得到的素養。」</p>
+      <p>樂學小書包延續母品牌「乾淨樂學」的承諾：無廣告、價值觀正向、適齡安全；以中華傳統文化為根，西方經典為翼，陪孩子從 4 歲聽到 15 歲。</p></div>
+    <div class="card"><h3>差異化三角</h3>
+      <p><b>乾淨</b>　無廣告、無演算法誘導、內容經審。<br>
+         <b>有體系</b>　分齡分級、主題成軸、難度進階。<br>
+         <b>有閉環</b>　每集配繪本作業，把「聽過」變「學會」。</p></div>
+  </div>
+  <div class="callout"><b>定位語：</b>當別人賣「兒童影片庫」，我們賣「一條從睡前故事到閱讀素養的成長路徑」。這是把 CPM 思維（看多少）升級為訂閱思維（值不值得長期擁有）。</div>
+</div></section>
+
+<!-- ASSETS -->
+<section id="assets"><div class="wrap">
+  <div class="eyebrow">Content Assets</div>
+  <h2 class="sec">資產盤點：從 274 集，嚴選 150 集</h2>
+  <p class="sec-sub">原始授權片庫含 Live／Video 重複版本共 274 筆。我們以資料驅動方式去重並排序，挑出最適合付費課程的 150 集。</p>
+  <div class="grid g4">
+    <div class="stat"><div class="num">274 → 150</div><div class="lbl">去重後依成效嚴選</div></div>
+    <div class="stat"><div class="num">35%</div><div class="lbl">播放量（對數）權重</div><div class="src">+完播 25% +互動 20%</div></div>
+    <div class="stat"><div class="num">+CTR 10%</div><div class="lbl">點擊吸引力</div><div class="src">+平均觀看時長 10%</div></div>
+    <div class="stat"><div class="num">6 線 9 主題</div><div class="lbl">重新分類覆蓋</div></div>
+  </div>
+  <div class="card" style="margin-top:18px"><h3>嚴選方法（可複現）</h3>
+    <p>① 以清洗後的故事主軸去除 Live/Video 重複版本；② 對每集計算綜合成效分數（播放量取對數後標準化 35%、完播率 25%、互動率 20%、CTR 10%、平均觀看時長 10%）；③ 依六條產品線的課程容量配額，於各線內取分數最高者，確保體系完整而非只堆熱門。</p></div>
+</div></section>
+
+<!-- CURRICULUM -->
+<section id="curriculum"><div class="wrap">
+  <div class="eyebrow">Curriculum System</div>
+  <h2 class="sec">課程體系：6 條分齡產品線</h2>
+  <p class="sec-sub">沿用原頻道既有的年齡分級（截圖播放清單），重新命名為統一「小書包」家族，難度由低到高拾級而上。</p>
+  <div class="lines">
+    
+        <div class="lcard" style="--lc:#3f6fb0">
+          <div class="lcard-top">
+            <span class="lcard-name">🌙 晚安小書包</span>
+            <span class="lcard-age">4–9歲</span>
+          </div>
+          <div class="lcard-tag">睡前 · 品德 · 情緒 · 音樂啟蒙</div>
+          <div class="lcard-n"><b>53</b> 集</div>
+          <p class="lcard-blurb">源自《月亮睡著了》。完播率全頻道最高（平均 64%），是睡前親子陪伴的黃金時段內容。以溫柔敘事傳遞善良、孝順、勇氣等品格種子。</p>
+        </div>
+
+        <div class="lcard" style="--lc:#c9803a">
+          <div class="lcard-top">
+            <span class="lcard-name">✨ 故事小書包</span>
+            <span class="lcard-age">7–12歲</span>
+          </div>
+          <div class="lcard-tag">傳統文化 · 歷史人物 · 神話 · 西方經典</div>
+          <div class="lcard-n"><b>50</b> 集</div>
+          <p class="lcard-blurb">源自《故事盒子》。內容厚度最高、題材最廣，從中國歷史人物到狄更斯、托爾斯泰西方經典，是培養文化底蘊與閱讀興趣的主力課程。</p>
+        </div>
+
+        <div class="lcard" style="--lc:#2e8b6b">
+          <div class="lcard-top">
+            <span class="lcard-name">📚 成語小書包</span>
+            <span class="lcard-age">6–12歲</span>
+          </div>
+          <div class="lcard-tag">成語 · 閱讀素養 · 思辨討論</div>
+          <div class="lcard-n"><b>20</b> 集</div>
+          <p class="lcard-blurb">源自《故事成語／小書包學堂》。「從故事學成語」結構化設計，每集 5–6 個成語＋停下來思考討論，直接對接學校閱讀素養與寫作能力。</p>
+        </div>
+
+        <div class="lcard" style="--lc:#7a5aa6">
+          <div class="lcard-top">
+            <span class="lcard-name">📖 博學小書包</span>
+            <span class="lcard-age">9–15歲</span>
+          </div>
+          <div class="lcard-tag">詩詞 · 通識 · 跨域思辨</div>
+          <div class="lcard-n"><b>15</b> 集</div>
+          <p class="lcard-blurb">源自《博學少年》。CTR 與互動率全頻道最高，題材橫跨詩詞、節氣、歌劇、語言演變，為高齡段孩子提供有深度的通識養分。</p>
+        </div>
+
+        <div class="lcard" style="--lc:#d96a9a">
+          <div class="lcard-top">
+            <span class="lcard-name">🌏 雙語小書包</span>
+            <span class="lcard-age">6–12歲</span>
+          </div>
+          <div class="lcard-tag">中英雙語 · 聽力 · 故事學英文</div>
+          <div class="lcard-n"><b>5</b> 集</div>
+          <p class="lcard-blurb">源自《故事英語》。互動率全頻道之冠（5.8%），由獲獎英文老師帶領「從故事自然學英文」，是最具差異化的加值賣點。</p>
+        </div>
+
+        <div class="lcard" style="--lc:#8a8f57">
+          <div class="lcard-top">
+            <span class="lcard-name">📝 家長充電站</span>
+            <span class="lcard-age">家長</span>
+          </div>
+          <div class="lcard-tag">教養方法 · 思考力培養 · 共讀指引</div>
+          <div class="lcard-n"><b>7</b> 集</div>
+          <p class="lcard-blurb">源自《家長的小錦囊》。訂閱專屬的家長賦能內容，把『買給孩子』升級為『陪孩子一起成長』，是提升續訂率的情感黏著點。</p>
+        </div>
+  </div>
+
+  <h3 style="color:var(--jade);margin:38px 0 6px;font-size:20px">年齡進階階梯</h3>
+  <div class="ladder">
+    <div class="rung"><span class="age">4–6 歲</span><div class="bar" style="width:32%"></div><span class="lbl">晚安小書包（情緒・品格・聽覺啟蒙）＋ 樂音探險</span></div>
+    <div class="rung"><span class="age">6–9 歲</span><div class="bar" style="width:50%"></div><span class="lbl">晚安／故事小書包 ＋ 成語入門 ＋ 雙語啟蒙</span></div>
+    <div class="rung"><span class="age">9–12 歲</span><div class="bar" style="width:72%"></div><span class="lbl">故事小書包 ＋ 成語進階 ＋ 歷史人物 ＋ 雙語聽力</span></div>
+    <div class="rung"><span class="age">12–15 歲</span><div class="bar" style="width:92%"></div><span class="lbl">博學小書包（詩詞・通識・跨域思辨）</span></div>
+  </div>
+
+  <h3 style="color:var(--jade);margin:38px 0 10px;font-size:20px">9 條素養主題軸（橫向貫穿各線）</h3>
+  <p style="color:var(--muted);font-size:14px;margin-bottom:14px">同一主題在不同年齡線以不同深度出現，方便家長依孩子興趣橫向選課，也方便做主題式課程包。</p>
+  <div id="themechips" class="filters"></div>
+</div></section>
+
+<!-- HOMEWORK -->
+<section id="homework"><div class="wrap">
+  <div class="eyebrow">Picture-Book Homework</div>
+  <h2 class="sec">繪本作業系統：把「聽過」變成「學會」</h2>
+  <p class="sec-sub">每集故事配一份可下載／可線上完成的「小書包作業單」，是本 IP 最關鍵的付費理由——它讓學習成效被看見，也創造親子共讀的儀式感。</p>
+  <div class="hw-steps">
+    <div class="hw"><h4>聽前・好奇鉤子</h4><p>一張封面圖＋一個開放式提問，引導孩子帶著問題聽故事，提升專注與完播。</p></div>
+    <div class="hw"><h4>聽後・三問理解</h4><p>「發生什麼／角色為何這樣做／如果是你」三層提問，從複述到思辨。</p></div>
+    <div class="hw"><h4>語文・字詞卡</h4><p>成語／生字／好句卡片，附例句與描紅，直接對接學校語文與寫作。</p></div>
+    <div class="hw"><h4>品德・反思格</h4><p>對應品格主題的一句話反思與自評星等，沉澱價值觀。</p></div>
+    <div class="hw"><h4>創作・手作任務</h4><p>畫一幅故事場景或續寫結局，產出可累積進孩子的「小書包成長冊」。</p></div>
+    <div class="hw"><h4>親子・共讀指引</h4><p>給家長 3 個延伸提問與 1 個生活實踐，連動家長充電站內容。</p></div>
+  </div>
+  <div class="callout"><b>產品化：</b>作業單依六條產品線各出一套版型；完成作業可在 App 內集點、解鎖徽章與「成長冊」PDF——把單向收看轉為可累積的學習資產，顯著拉高續訂率與家長分享意願。</div>
+</div></section>
+
+<!-- BIZ -->
+<section id="biz"><div class="wrap">
+  <div class="eyebrow">Business Model</div>
+  <h2 class="sec">商業模式：SVOD 訂閱 ＋ TVOD 課程包雙軌</h2>
+  <p class="sec-sub">沿用乾淨樂學現有機制：訂閱享全站免廣告與作業系統；同時開放單一系列／主題包單買，承接「只想要某一塊」的家長，再向上轉訂閱。</p>
+  <div class="price">
+    <div class="ptier"><h3>單系列課程包（TVOD）</h3><div class="amt">單購<small> / 永久</small></div>
+      <ul><li>單一產品線完整解鎖</li><li>含該線全部繪本作業單</li><li>適合先試水溫的家長</li><li>作為訂閱的引流入口</li></ul></div>
+    <div class="ptier feat"><span class="pill">主推</span><h3>年訂閱（SVOD）</h3><div class="amt">$88<small> / 年</small></div>
+      <ul><li>全 6 線 150 集免廣告暢看</li><li>全套繪本作業＋成長冊</li><li>家長充電站全解鎖</li><li>新內容持續上架</li><li>多童帳號（建議）</li></ul></div>
+    <div class="ptier"><h3>月訂閱（SVOD）</h3><div class="amt">$9.99<small> / 月</small></div>
+      <ul><li>與年訂同等權益</li><li>低門檻入場</li><li>7 天免費試用引導</li><li>季節活動轉年訂</li></ul></div>
+  </div>
+  <div class="callout"><b>轉化路徑：</b>免費單集（曝光）→ 7 天試用 / 單系列課程包（TVOD 嚐鮮）→ 月訂閱（習慣養成）→ 年訂閱（$88 鎖定，最佳單位成本）。繪本作業與成長冊是每一層的續訂黏著點。</div>
+  <div class="grid g3" style="margin-top:18px">
+    <div class="card"><h3>定價邏輯</h3><p>$88/年＝月均約 $7.3，較月訂省 27%，與 Epic! 年費同帶，鼓勵年訂鎖定現金流與留存。</p></div>
+    <div class="card"><h3>續訂引擎</h3><p>每月上新 + 作業集點徽章 + 成長冊累積 + 家長充電站，讓「停訂＝失去進度」。</p></div>
+    <div class="card"><h3>擴張性</h3><p>體系可無限加集、加線（書法、品格、節氣主題包），TVOD 主題包亦可作禮物卡銷售。</p></div>
+  </div>
+</div></section>
+
+<!-- ROADMAP -->
+<section id="roadmap"><div class="wrap">
+  <div class="eyebrow">Launch Roadmap</div>
+  <h2 class="sec">上線路線圖</h2>
+  <div class="road">
+    <div class="rstep"><div class="ph">PHASE 1 · 0–6 週</div><h4>體系定版</h4><p>確認 6 線命名、150 集歸類與新標題，產出作業單版型 ×6。</p></div>
+    <div class="rstep"><div class="ph">PHASE 2 · 4–10 週</div><h4>MVP 上線</h4><p>先上「晚安＋成語」兩線＋作業，開放月訂與試用，驗證轉化。</p></div>
+    <div class="rstep"><div class="ph">PHASE 3 · 8–16 週</div><h4>全線與年訂</h4><p>補齊故事／博學／雙語線，推年訂 $88 與課程包，啟動家長站。</p></div>
+    <div class="rstep"><div class="ph">PHASE 4 · 持續</div><h4>成長冊與擴充</h4><p>上線徽章成長冊、每月上新、主題包與禮物卡，做留存與口碑。</p></div>
+  </div>
+</div></section>
+
+<!-- APPENDIX -->
+<section id="appendix"><div class="wrap">
+  <div class="eyebrow">Appendix</div>
+  <h2 class="sec">完整片單：150 集分齡分類表</h2>
+  <p class="sec-sub">下表為嚴選後的 150 集，已標註所屬產品線、適齡與主題軸；可點選上方標籤篩選。「成效」長條為相對播放熱度。</p>
+  <div class="filters" id="lineFilters"></div>
+  <div id="count"></div>
+  <div style="overflow-x:auto">
+  <table id="eptbl">
+    <thead><tr><th style="width:42%">原始標題</th><th>產品線</th><th>適齡</th><th>主題</th><th>完播</th><th>成效</th></tr></thead>
+    <tbody></tbody>
+  </table>
+  </div>
+  <p class="note">標題為原始片名，正式上線將依各產品線語氣統一改寫並配作業單。連結指向原內容頁。</p>
+</div></section>
+
+<div class="foot"><div class="wrap">
+  樂學小書包 New IP Proposal · 乾淨樂學　|　內容資產 150 集嚴選自授權片庫<br>
+  參考來源：Edutainment / Apps-for-Kids 市場報告（2025）、Epic!・凱叔講故事・親子天下 等公開資料
+</div></div>
+
+<script>
+const EPS = [{"t": "在極度飢餓的情況下，有人要給你釣竿🎣或魚🐟，你會怎麼選呢？", "line": "✨ 故事小書包", "age": "7–12歲", "theme": "傳統故事", "views": 17063, "compl": 48, "url": "http://www.ganjingworld.com/video/1h7b1sq7ti55Qqo8OZllV36xJ1fk1c"}, {"t": "清朝的一位「孝廉」為什麼感嘆：能夠當人真好？原來，他有一般人所沒有的記憶 😲", "line": "✨ 故事小書包", "age": "7–12歲", "theme": "品德修養", "views": 14325, "compl": 61, "url": "http://www.ganjingworld.com/live/1h8vac56n16rlUfyuTqG9wL931t41c"}, {"t": "諸葛亮才高八斗，他會看中什麼樣的女子？", "line": "✨ 故事小書包", "age": "7–12歲", "theme": "傳統故事", "views": 11548, "compl": 59, "url": "http://www.ganjingworld.com/live/1hi9fdcmvg41oHbim8RMM91YF1201c"}, {"t": "忙碌的國王🤴 有三個重要的人生問題 ⁉️", "line": "✨ 故事小書包", "age": "7–12歲", "theme": "傳統故事", "views": 11458, "compl": 58, "url": "http://www.ganjingworld.com/video/1hceb9s526f1BN4497nFiYCmt12r1c"}, {"t": "土地廟裡的土地神都是坐著的，可是，這座土地神怎麼要站起來的樣子？😲", "line": "✨ 故事小書包", "age": "7–12歲", "theme": "傳統故事", "views": 10822, "compl": 62, "url": "http://www.ganjingworld.com/live/1hhcagr9j0b5DpFDcdrfHl1fc1re1c"}, {"t": "送別人聖誕禮物，你會怎麼考慮？來聽聽賢士怎麼送的吧！", "line": "✨ 故事小書包", "age": "7–12歲", "theme": "西方經典", "views": 10114, "compl": 56, "url": "http://www.ganjingworld.com/live/1h9be62coih5SudqGhpbRCYsk1m41c"}, {"t": "偶受繡囊之恩，她湧泉相報之心，在時間之河流入山谷時，回響激盪，最終成就一段奇緣", "line": "✨ 故事小書包", "age": "7–12歲", "theme": "傳統故事", "views": 9902, "compl": 59, "url": "http://www.ganjingworld.com/live/1hfmq9317js3NFp6hZD9rjIhM1421c"}, {"t": "三個小偷潛進好家村，商量著要大幹一筆💰，但其中有兩個賊是菜鳥，他們能得手嗎❓", "line": "✨ 故事小書包", "age": "7–12歲", "theme": "傳統故事", "views": 9643, "compl": 60, "url": "http://www.ganjingworld.com/live/1hkgfps78qo1tY97C2zcOY0d51aq1c"}, {"t": "深山裡遇老虎🐯，老虎卻不傷他，為什麼？", "line": "✨ 故事小書包", "age": "7–12歲", "theme": "傳統故事", "views": 9553, "compl": 60, "url": "http://www.ganjingworld.com/live/1i8v33keff43LsodBErRqYazL1vt1c"}, {"t": "和尚的貓死了，當天，他夢見貓來告訴他⋯⋯", "line": "✨ 故事小書包", "age": "7–12歲", "theme": "傳統故事", "views": 9385, "compl": 45, "url": "http://www.ganjingworld.com/video/1h6s99nfbe03ehZVpuThhY2eV1h11c"}, {"t": "原來古代就有穿越了！記錄於乾隆年間的《夜譚隨錄》", "line": "✨ 故事小書包", "age": "7–12歲", "theme": "品德修養", "views": 8975, "compl": 61, "url": "http://www.ganjingworld.com/live/1i28dane7la3eTuN0OyvCn6dt1v01c"}, {"t": "一輛神秘的豪華馬車，會將他帶向何處？未來是福？是禍？", "line": "✨ 故事小書包", "age": "7–12歲", "theme": "成語素養", "views": 8581, "compl": 54, "url": "http://www.ganjingworld.com/live/1hq0c003mgg1rHRzuxGYdeA141kg1c"}, {"t": "計聖孫臏：最經典的智勝故事", "line": "✨ 故事小書包", "age": "7–12歲", "theme": "歷史人物", "views": 8369, "compl": 68, "url": "http://www.ganjingworld.com/live/1i4hl950kq56pNhkSdTMKzQI210i1c"}, {"t": "這一文錢膏藥是怎麼誕生的呢？它又有甚麼神奇的地方？", "line": "✨ 故事小書包", "age": "7–12歲", "theme": "傳統故事", "views": 8306, "compl": 65, "url": "http://www.ganjingworld.com/live/1hg720iolva6xbCZ8Agget7851rm1c"}, {"t": "一天之內走過的土地都是他的！ 他越走越興奮：更多、更多、還要更多！改編自托爾斯泰 《多少地才夠》", "line": "✨ 故事小書包", "age": "7–12歲", "theme": "西方經典", "views": 8232, "compl": 52, "url": "http://www.ganjingworld.com/live/1i3hheani4s6pUaroHHj25YXY1np1c"}, {"t": "這個陌生人似乎正在悄悄改變著賽門一家人的生活", "line": "✨ 故事小書包", "age": "7–12歲", "theme": "西方經典", "views": 7490, "compl": 47, "url": "http://www.ganjingworld.com/live/1hn0sv5n65e6yE061ef2qZr0N1rg1c"}, {"t": "唐玄宗經歷的神奇事，他去到哪兒，做了什麼事？", "line": "✨ 故事小書包", "age": "7–12歲", "theme": "歷史人物", "views": 7400, "compl": 57, "url": "http://www.ganjingworld.com/live/1ial3iodtnu5AQcMkTtRsRez21351c"}, {"t": "希臘神話中追逐太陽的少年，和守護孩子的父親", "line": "✨ 故事小書包", "age": "7–12歲", "theme": "神話神仙", "views": 7298, "compl": 58, "url": "http://www.ganjingworld.com/live/1hb59a6s86n3PGDvUbUvJ5N6U1021c"}, {"t": "如果你手摸到的東西都能變成黃金，這樣你會高興嗎？", "line": "✨ 故事小書包", "age": "7–12歲", "theme": "傳統故事", "views": 7232, "compl": 54, "url": "http://www.ganjingworld.com/video/1h558ua9tmf11cwvhFmXAUjEw1mg1c"}, {"t": "一場雨，就把整個王國沖走了？！他真的曾在這裡當過太守嗎？", "line": "✨ 故事小書包", "age": "7–12歲", "theme": "成語素養", "views": 7150, "compl": 76, "url": "http://www.ganjingworld.com/live/1hqmo17d9p6Ll7CMuK1OFF9St1hg1c"}, {"t": "完結篇：回歸！", "line": "✨ 故事小書包", "age": "7–12歲", "theme": "西方經典", "views": 7087, "compl": 65, "url": "http://www.ganjingworld.com/live/1hngjb2kl4a7CnDaXAqu2Ryd41k21c"}, {"t": "郎中是治病的，怎麼也治了良心呢？", "line": "✨ 故事小書包", "age": "7–12歲", "theme": "傳統故事", "views": 6803, "compl": 57, "url": "http://www.ganjingworld.com/live/1hjdsar9hpvwxuY5RB64ZmljS1391c"}, {"t": "糟了，秦王不守信！藺相如怎麼完璧歸趙？", "line": "✨ 故事小書包", "age": "7–12歲", "theme": "歷史人物", "views": 6789, "compl": 62, "url": "http://www.ganjingworld.com/live/1i6l95iiqcmRo6AgwP91LpZKv1t71c"}, {"t": "一個少年，竟然能命令白龍。你相信嗎？", "line": "✨ 故事小書包", "age": "7–12歲", "theme": "歷史人物", "views": 6718, "compl": 41, "url": "http://www.ganjingworld.com/live/1ifg0n3ht1u6yIVo0xe1PRW6R12o1c"}, {"t": "陌生人的身份曝光，他身上竟藏著一個神秘使命⋯⋯", "line": "✨ 故事小書包", "age": "7–12歲", "theme": "西方經典", "views": 6691, "compl": 49, "url": "http://www.ganjingworld.com/live/1hn8dntshrl2oZr2T8FrAAvc715h1c"}, {"t": "雪地裡，貧窮的鞋匠看到一個全身赤裸的陌生人，在教堂後瑟瑟發抖⋯⋯", "line": "✨ 故事小書包", "age": "7–12歲", "theme": "西方經典", "views": 6663, "compl": 54, "url": "http://www.ganjingworld.com/live/1hmppaj78as2KfGh1wozlQE5q18o1c"}, {"t": "小偷頭目為了把牛還給小男孩，竟然要找警察報案！他們能全身而退嗎❓", "line": "✨ 故事小書包", "age": "7–12歲", "theme": "傳統故事", "views": 6603, "compl": 53, "url": "http://www.ganjingworld.com/live/1hl4i3uoug42kHS0Xpv0RzMdD1l71c"}, {"t": "中國古代最勇敢的女孩：12歲驅除妖邪，越王娶她為后", "line": "✨ 故事小書包", "age": "7–12歲", "theme": "品德修養", "views": 6472, "compl": 80, "url": "http://www.ganjingworld.com/live/1i0tfdl6c2t2ztGT2wbHylKhY1ni1c"}, {"t": "藺相如竟讓大將軍感動得「負荊請罪」！這是怎麼回事？", "line": "✨ 故事小書包", "age": "7–12歲", "theme": "成語素養", "views": 6433, "compl": 58, "url": "http://www.ganjingworld.com/live/1i7jtlg9b6t2FrkJZnAn6IMNn1di1c"}, {"t": "🎎 智慧的醜新娘：醜新娘只說了一句話，瞬間贏得新郎的心！", "line": "✨ 故事小書包", "age": "7–12歲", "theme": "品德修養", "views": 6162, "compl": 63, "url": "http://www.ganjingworld.com/live/1hv1qa2cofs614Ayf8YNr42XV1hj1c"}, {"t": "珍貴的傳家寶，其實看不見😲", "line": "✨ 故事小書包", "age": "7–12歲", "theme": "品德修養", "views": 6061, "compl": 49, "url": "http://www.ganjingworld.com/live/1ic85fo402n5Hep2idHtdYNyy1of1c"}, {"t": "英國狄更斯經典", "line": "✨ 故事小書包", "age": "7–12歲", "theme": "西方經典", "views": 5929, "compl": 44, "url": "http://www.ganjingworld.com/live/1icqes3dmm31Vb2Drc9tzumUj1mr1c"}, {"t": "看相的說他要有大難。可是，他收帳回來，怎麼就變成有大福氣的人?", "line": "✨ 故事小書包", "age": "7–12歲", "theme": "傳統故事", "views": 5835, "compl": 57, "url": "http://www.ganjingworld.com/video/1h4e3o5rl8i6EjewP5Z283tji1891c"}, {"t": "趙王的擔心：它價值連城？還是會帶來戰爭？", "line": "✨ 故事小書包", "age": "7–12歲", "theme": "歷史人物", "views": 5739, "compl": 61, "url": "http://www.ganjingworld.com/live/1i66qajk5em22A1XdZ3FRLMbz1ab1c"}, {"t": "和尚喊「大山要飛來啦！快搬家啊！」會有人相信他嗎？🏔️", "line": "✨ 故事小書包", "age": "7–12歲", "theme": "傳統故事", "views": 5248, "compl": 62, "url": "http://www.ganjingworld.com/video/1gqj4d6j30b1IZNAY09kt65wT19p1c"}, {"t": "一山還比一山高，誰的法術更高超？", "line": "✨ 故事小書包", "age": "7–12歲", "theme": "歷史人物", "views": 5079, "compl": 44, "url": "http://www.ganjingworld.com/live/1igk7h6evnr4sDbJ7X0bHnKMo1461c"}, {"t": "茶館裡竟然有位拔牙大王！為什麼他拔牙不會痛？", "line": "✨ 故事小書包", "age": "7–12歲", "theme": "傳統故事", "views": 4612, "compl": 56, "url": "http://www.ganjingworld.com/video/1guiqrrf8ujPUnGpyuKe2h8ji1211c"}, {"t": "是誰有這樣一面神奇寶鏡，能照出未來？", "line": "✨ 故事小書包", "age": "7–12歲", "theme": "傳統故事", "views": 4116, "compl": 68, "url": "http://www.ganjingworld.com/video/1grjr1eppa7My2A37L3HeAchI1uo1c"}, {"t": "大逆轉！這只是倒楣漢的「運氣」嗎？ 💰", "line": "✨ 故事小書包", "age": "7–12歲", "theme": "神話神仙", "views": 4062, "compl": 88, "url": "http://www.ganjingworld.com/video/1gniqrj5qtd2qNkTDmJdO1ajk18v1c"}, {"t": "林仙人（下）一念之差 錯失仙緣 ☯️", "line": "✨ 故事小書包", "age": "7–12歲", "theme": "神話神仙", "views": 3946, "compl": 63, "url": "http://www.ganjingworld.com/video/1ggni04007j5ufrBjKiJxChSi1i51c"}, {"t": "有能力賣雨雪的神秘道人，竟然和韓愈有關係？", "line": "✨ 故事小書包", "age": "7–12歲", "theme": "神話神仙", "views": 3918, "compl": 38, "url": "http://www.ganjingworld.com/video/1gosl0r7em41Ln75i3mICxxN01mr1c"}, {"t": "他不小心誤入陰間，牛頭鬼為什麼要救他？", "line": "✨ 故事小書包", "age": "7–12歲", "theme": "傳統故事", "views": 3894, "compl": 64, "url": "http://www.ganjingworld.com/video/1gujrgrp8r72EeBmkEePhtAIM1kj1c"}, {"t": "空心秤（上）改過向善后 卻連遭厄運 難道好心沒好報❓", "line": "✨ 故事小書包", "age": "7–12歲", "theme": "品德修養", "views": 3533, "compl": 35, "url": "http://www.ganjingworld.com/video/1gkqhnbove55NS6sqMWEpysvE1b01c"}, {"t": "奇遇三百年前先祖 學劍仙之術 🧙‍♂️", "line": "✨ 故事小書包", "age": "7–12歲", "theme": "神話神仙", "views": 3294, "compl": 63, "url": "http://www.ganjingworld.com/video/1ghst1rals72bP3wJLKU36Nua1hu1c"}, {"t": "花上的詩預言了韓愈未來的事 道人說天機不可泄露", "line": "✨ 故事小書包", "age": "7–12歲", "theme": "神話神仙", "views": 3186, "compl": 53, "url": "http://www.ganjingworld.com/video/1grm9m2cpsc3hoovmJBRtZKr512f1c"}, {"t": "絕世寶劍鑄成 肉眼凡胎難見🗡️", "line": "✨ 故事小書包", "age": "7–12歲", "theme": "神話神仙", "views": 3086, "compl": 44, "url": "http://www.ganjingworld.com/video/1giha4qg3r52NNJargPk8tMFV1ct1c"}, {"t": "林仙人（上）他真的能點石成金？✨", "line": "✨ 故事小書包", "age": "7–12歲", "theme": "神話神仙", "views": 2697, "compl": 78, "url": "http://www.ganjingworld.com/video/1gg5ku70nlm47XB8lYsgp5dER1op1c"}, {"t": "樂樂夢遊天國（二）", "line": "✨ 故事小書包", "age": "7–12歲", "theme": "神話神仙", "views": 2447, "compl": 60, "url": "http://www.ganjingworld.com/video/1gc1c65g53o4HIeZkZoFds5w319h1c"}, {"t": "人魚故事（一）：光華寶珠", "line": "✨ 故事小書包", "age": "7–12歲", "theme": "神話神仙", "views": 2144, "compl": 44, "url": "http://www.ganjingworld.com/video/1gao68a9qqg3X5nQcBm5HYlC71fu1c"}, {"t": "曾參殺人了", "line": "✨ 故事小書包", "age": "7–12歲", "theme": "傳統故事", "views": 1032, "compl": 98, "url": "http://www.ganjingworld.com/video/1g46pd4042b3kf43MDPPbjf0O1a51c"}, {"t": "🏅獲獎老師講解：從大盜的蜘蛛絲學英文 ✅不用硬背 ✅自然學會", "line": "🌏 雙語小書包", "age": "6–12歲", "theme": "節氣自然", "views": 3355, "compl": 37, "url": "http://www.ganjingworld.com/live/1i0hp9vd50j4wdMNoDI4PdxT11001c"}, {"t": "🏅獲獎老師講解：從李寄斬蛇學英文 ✅不用硬背 ✅自然學會", "line": "🌏 雙語小書包", "age": "6–12歲", "theme": "節氣自然", "views": 2406, "compl": 67, "url": "http://www.ganjingworld.com/live/1i1lhg3ctii2PJVrnxidewtjD19a1c"}, {"t": "🔥 限時免費：從智慧的醜新娘學英文 🏅獲獎老師講解 ✅不用硬背 ✅自然學會", "line": "🌏 雙語小書包", "age": "6–12歲", "theme": "節氣自然", "views": 2226, "compl": 49, "url": "http://www.ganjingworld.com/live/1hvgi8g52ak5mgXe0rL3mXIcO1ol1c"}, {"t": "從故事學英文 ✅不用硬背 ✅自然學會🥇獲獎老師帶領", "line": "🌏 雙語小書包", "age": "6–12歲", "theme": "節氣自然", "views": 1841, "compl": 34, "url": "http://www.ganjingworld.com/live/1hue5865tk01PY3FqzHJiliYe1bj1c"}, {"t": "小書包的開動了！🥇 屢獲獎項的英文老師帶領", "line": "🌏 雙語小書包", "age": "6–12歲", "theme": "英語啟蒙", "views": 1706, "compl": 59, "url": "http://www.ganjingworld.com/live/1hube24tqma3d0127J3cOZkXB1651c"}, {"t": "乞丐西天之旅，捨我為人，收穫圓滿", "line": "🌙 晚安小書包", "age": "4–9歲", "theme": "傳統故事", "views": 23447, "compl": 51, "url": "http://www.ganjingworld.com/video/1h7ts7f1gn41GUhbxJbL2zks51g91c"}, {"t": "一瓶油是「大布施」，一車油卻是「小布施」😲 這是啥道理？", "line": "🌙 晚安小書包", "age": "4–9歲", "theme": "神話神仙", "views": 23153, "compl": 52, "url": "http://www.ganjingworld.com/live/1hma3ia81rs2ayi88aSW4wiNA1921c"}, {"t": "格列佛誤闖小人國 🚢  成為拯救小人國的大英雄！", "line": "🌙 晚安小書包", "age": "4–9歲", "theme": "傳統故事", "views": 19739, "compl": 51, "url": "http://www.ganjingworld.com/live/1he7l6imh7v4PKrq8MPwSTGXz1ud1c"}, {"t": "老鎖匠要找接班人，可是，為什麼不是選開鎖最快的那個人呢？", "line": "🌙 晚安小書包", "age": "4–9歲", "theme": "傳統故事", "views": 15674, "compl": 48, "url": "http://www.ganjingworld.com/video/1h433d016sq4CAW2jJE5K5Uak1pr1c"}, {"t": "與好夥伴發生誤會之後，國王學到了甚麼？", "line": "🌙 晚安小書包", "age": "4–9歲", "theme": "神話神仙", "views": 15497, "compl": 53, "url": "http://www.ganjingworld.com/live/1hbmvovid733U8LwDfU0GvRJH16i1c"}, {"t": "為媽媽採完桑葚的孝子，卻遇到拿刀大漢擋路，他還能平安回家嗎？", "line": "🌙 晚安小書包", "age": "4–9歲", "theme": "品德修養", "views": 14856, "compl": 59, "url": "http://www.ganjingworld.com/video/1h68e7bqv4g2ByoAaBlrHzOoQ1ct1c"}, {"t": "「你為什麼想學草藥？」一個關於真心的測試", "line": "🌙 晚安小書包", "age": "4–9歲", "theme": "傳統故事", "views": 14393, "compl": 65, "url": "http://www.ganjingworld.com/live/1hphc12lu2n467BX1uWSzWfxP1ia1c"}, {"t": "皇帝也改變不了的天命，怎麼辦？", "line": "🌙 晚安小書包", "age": "4–9歲", "theme": "歷史人物", "views": 14376, "compl": 61, "url": "http://www.ganjingworld.com/live/1hnt2j94mn738Ya2dF02ts8IA1101c"}, {"t": "愚公想把村子前的大山移走，最後他是怎麼成功的呢？", "line": "🌙 晚安小書包", "age": "4–9歲", "theme": "傳統故事", "views": 13331, "compl": 90, "url": "http://www.ganjingworld.com/live/1hdbisda2bs7cYX6wdHsyzRfI1ts1c"}, {"t": "冰天雪地裡他找不到竹筍，這時✨卻出了奇蹟，積雪裂開了.....", "line": "🌙 晚安小書包", "age": "4–9歲", "theme": "品德修養", "views": 12963, "compl": 50, "url": "http://www.ganjingworld.com/live/1h81ortqaqvO1RphxI7RibVzb17a1c"}, {"t": "周處完全沒想到「第三害」會是這個，而且也是最難的一關 💥", "line": "🌙 晚安小書包", "age": "4–9歲", "theme": "傳統故事", "views": 12840, "compl": 60, "url": "http://www.ganjingworld.com/live/1hj2mas4bti5Im3OvqYSYVB2m1sq1c"}, {"t": "到底哪位王子才是將來的好國王呢？", "line": "🌙 晚安小書包", "age": "4–9歲", "theme": "傳統故事", "views": 12428, "compl": 61, "url": "http://www.ganjingworld.com/live/1hdr79rnj1f4AHt7hVJJcghEY1j31c"}, {"t": "一枚神秘的銅錢讓他反轉人生！是運氣？是選擇？還是品格？", "line": "🌙 晚安小書包", "age": "4–9歲", "theme": "品德修養", "views": 11589, "compl": 68, "url": "http://www.ganjingworld.com/live/1hr8m3o3rcp4BlBdQkHgYGp491tu1c"}, {"t": "巫婆歛財害命💰，縣長西門豹反將一軍，為民除害", "line": "🌙 晚安小書包", "age": "4–9歲", "theme": "傳統故事", "views": 11421, "compl": 53, "url": "http://www.ganjingworld.com/video/1h3na5a66vrFvfeZ7TtbCv6mN1v61c"}, {"t": "你聽過多少種聲音？當這些聲音都消失時，會有甚麼神奇的事情發生嗎？🪄✨🪶🪶到頻道首頁訂閱會員，立即行動🪶🪶", "line": "🌙 晚安小書包", "age": "4–9歲", "theme": "神話神仙", "views": 11202, "compl": 58, "url": "http://www.ganjingworld.com/live/1hafik6me9pFtdqycP2XLnyuB1kq1c"}, {"t": "窮小子海藏終於攢夠了錢，為什麼他的願望還不能達成？", "line": "🌙 晚安小書包", "age": "4–9歲", "theme": "傳統故事", "views": 11182, "compl": 81, "url": "http://www.ganjingworld.com/live/1hlmq5easg85stMDSKdot1ND41gh1c"}, {"t": "畫出來的龍，真的會飛嗎？", "line": "🌙 晚安小書包", "age": "4–9歲", "theme": "成語素養", "views": 11042, "compl": 65, "url": "http://www.ganjingworld.com/live/1hk0s7uik7f4IaU2EYFNfcr3K1an1c"}, {"t": "穿牆術怎麼不靈了？😵", "line": "🌙 晚安小書包", "age": "4–9歲", "theme": "神話神仙", "views": 10745, "compl": 60, "url": "http://www.ganjingworld.com/live/1hugckfoqra4TFFuEFi74bIHh1hb1c"}, {"t": "被月下老人的紅線綁了，會發生甚麼事?", "line": "🌙 晚安小書包", "age": "4–9歲", "theme": "傳統故事", "views": 9831, "compl": 74, "url": "http://www.ganjingworld.com/live/1hovqtv5a9b7pP6IhgmCbZ6XK1i81c"}, {"t": "五歲的十三郎，元宵節花燈會🏮上巧擒壞人，協助皇帝破案🔎", "line": "🌙 晚安小書包", "age": "4–9歲", "theme": "歷史人物", "views": 9600, "compl": 67, "url": "http://www.ganjingworld.com/video/1h2u084ete539s0SaxQYJX6fX12h1c"}, {"t": "晏子的機智，讓看輕他的國王都不得不佩服呢！", "line": "🌙 晚安小書包", "age": "4–9歲", "theme": "傳統故事", "views": 9357, "compl": 65, "url": "http://www.ganjingworld.com/live/1i5lba7n9qo4FglLgHJRudnYN1gq1c"}, {"t": "驅蚊扇席、冬夜暖被；九歲黃香，用行動寫下千古孝道", "line": "🌙 晚安小書包", "age": "4–9歲", "theme": "品德修養", "views": 8951, "compl": 66, "url": "http://www.ganjingworld.com/live/1hhrhtrbuos1LPQwqdAgZeIDl1v71c"}, {"t": "朋友把很多錢托給你，他卻一直沒回來，你會怎麼做呢？", "line": "🌙 晚安小書包", "age": "4–9歲", "theme": "品德修養", "views": 8850, "compl": 70, "url": "http://www.ganjingworld.com/live/1i3u7pupgab3kIsymzz3ffwyF10k1c"}, {"t": "一眼看出兇手的包公，一句話就讓兇手認罪。", "line": "🌙 晚安小書包", "age": "4–9歲", "theme": "傳統故事", "views": 8572, "compl": 70, "url": "http://www.ganjingworld.com/live/1i15fscaoqt3IbT8aD7g6Teke18i1c"}, {"t": "「臥冰求鯉」的哥哥還有一個仗義的弟弟 ，兄弟倆後來都是三朝重臣呢", "line": "🌙 晚安小書包", "age": "4–9歲", "theme": "品德修養", "views": 8421, "compl": 75, "url": "http://www.ganjingworld.com/live/1i52vaqc4b14QZvhqBkBg5eDT1oa1c"}, {"t": "怎麼才能成為高手？賣油的老先生卻知道！", "line": "🌙 晚安小書包", "age": "4–9歲", "theme": "神話神仙", "views": 8367, "compl": 65, "url": "http://www.ganjingworld.com/live/1i8ci3psl696mEuGxwAO9wk0z1s01c"}, {"t": "💥咻咻！兩棵桃樹竟然會比武？", "line": "🌙 晚安小書包", "age": "4–9歲", "theme": "神話神仙", "views": 8336, "compl": 75, "url": "http://www.ganjingworld.com/live/1i2s8hlq22r1a1w1X4wBqletf1pd1c"}, {"t": "孔融為什麼要挑最小的梨子？🍐", "line": "🌙 晚安小書包", "age": "4–9歲", "theme": "傳統故事", "views": 8173, "compl": 100, "url": "http://www.ganjingworld.com/video/1ghtjecn5nu2ewSsClkwh0X6o1051c"}, {"t": "日本經典童話：下雪天的晚上，雲兒帶著什麼秘密去敲門？", "line": "🌙 晚安小書包", "age": "4–9歲", "theme": "品德修養", "views": 8054, "compl": 71, "url": "http://www.ganjingworld.com/live/1i7dp92r99a1FuVhT2Jh6n2ZG1f71c"}, {"t": "這位將軍的勇氣，竟然是不拔劍？！", "line": "🌙 晚安小書包", "age": "4–9歲", "theme": "歷史人物", "views": 7941, "compl": 66, "url": "http://www.ganjingworld.com/live/1i9gumah1hqwQH386abVzkpDo1t01c"}, {"t": "神仙喜歡怎樣的寶寶 🍡", "line": "🌙 晚安小書包", "age": "4–9歲", "theme": "神話神仙", "views": 7904, "compl": 81, "url": "http://www.ganjingworld.com/video/1ghlvtna75e3XaPwHRgjhiGfe17o1c"}, {"t": "知府大人用什麼妙招？讓鵝🪿自己在紙上寫供詞！？", "line": "🌙 晚安小書包", "age": "4–9歲", "theme": "傳統故事", "views": 7840, "compl": 67, "url": "http://www.ganjingworld.com/live/1ia2f383o9h3PkELPMNx6l0xK18j1c"}, {"t": "魔鬼的誘惑步步升級，善良的農夫能否保持初心呢？ 👨‍🌾", "line": "🌙 晚安小書包", "age": "4–9歲", "theme": "品德修養", "views": 7646, "compl": 61, "url": "http://www.ganjingworld.com/video/1h1lui8che87LiBSG2jVI5wcD1qd1c"}, {"t": "葫蘆裡有人？", "line": "🌙 晚安小書包", "age": "4–9歲", "theme": "傳統故事", "views": 7620, "compl": 75, "url": "http://www.ganjingworld.com/video/1h0ihmqjdqu3MHulGQ4rFP4PR1401c"}, {"t": "善良的種子長什麼樣？你見過「善良」開出的花嗎？", "line": "🌙 晚安小書包", "age": "4–9歲", "theme": "品德修養", "views": 6540, "compl": 67, "url": "http://www.ganjingworld.com/live/1hrod0ndoah17hp4NNs0LWEfL1b21c"}, {"t": "奇怪！為甚麼有人在危險的戰場上打草結？", "line": "🌙 晚安小書包", "age": "4–9歲", "theme": "品德修養", "views": 6375, "compl": 77, "url": "http://www.ganjingworld.com/live/1hsqpv789r314FBvkvbl3tjVj1n91c"}, {"t": "🐇 咚！撞上樹的兔子，讓農夫學到一個道理", "line": "🌙 晚安小書包", "age": "4–9歲", "theme": "品德修養", "views": 5971, "compl": 76, "url": "http://www.ganjingworld.com/live/1i0f2tuv1ml1iMib9DoxG4lgf1v51c"}, {"t": "提燈籠的先生唱了一首難聽的歌，這可怎麼辦才好？ 🔍", "line": "🌙 晚安小書包", "age": "4–9歲", "theme": "品德修養", "views": 4726, "compl": 55, "url": "http://www.ganjingworld.com/video/1go2f2qlnur3cW1Vkn6L7rS0M1il1c"}, {"t": "強盜放下手中的大刀「我們佩服你」！✨", "line": "🌙 晚安小書包", "age": "4–9歲", "theme": "品德修養", "views": 4590, "compl": 67, "url": "http://www.ganjingworld.com/video/1goc66c679p38lladQ6kd07rA1lg1c"}, {"t": "七歲的司馬光 救了小夥伴一命💡", "line": "🌙 晚安小書包", "age": "4–9歲", "theme": "傳統故事", "views": 4410, "compl": 100, "url": "http://www.ganjingworld.com/video/1glhg5dkk6l2gBOvBeNcOiWtE1ta1c"}, {"t": "小孩用了甚麼辦法能抓住強盜？", "line": "🌙 晚安小書包", "age": "4–9歲", "theme": "傳統故事", "views": 4228, "compl": 100, "url": "http://www.ganjingworld.com/video/1gpdc3tplhm4nhjJp9HdjtLli1bv1c"}, {"t": "大書法家王羲之在這座橋上的故事 爲何流傳了上千年？🪭", "line": "🌙 晚安小書包", "age": "4–9歲", "theme": "傳統故事", "views": 3779, "compl": 71, "url": "http://www.ganjingworld.com/video/1gkgqsbtinl1CWUoFdRHOJVSe1a81c"}, {"t": "是老虎！女兒此刻只想到了父親 🐅", "line": "🌙 晚安小書包", "age": "4–9歲", "theme": "傳統故事", "views": 3731, "compl": 100, "url": "http://www.ganjingworld.com/video/1ghlssc4nge3C7xGqmeLd5kiD1eq1c"}, {"t": "精靈村系列 3：糟糕，精靈村出事了？！ 🚨", "line": "🌙 晚安小書包", "age": "4–9歲", "theme": "傳統故事", "views": 3471, "compl": 81, "url": "http://www.ganjingworld.com/video/1gkenal50cr5ZhdUPgtkdP6CO14l1c"}, {"t": "精靈村系列 2：小精靈學法術，螢火蟲怎麼了？🏮", "line": "🌙 晚安小書包", "age": "4–9歲", "theme": "神話神仙", "views": 3417, "compl": 100, "url": "http://www.ganjingworld.com/video/1ghm4ookonqVK3hVHsAZrr4Gu13n1c"}, {"t": "✨打開耳朵，讓我們一起聽懂樂器之間的對話！", "line": "🌙 晚安小書包", "age": "4–9歲", "theme": "歷史人物", "views": 2592, "compl": 28, "url": "http://www.ganjingworld.com/live/1iek62irtdu2HbVEOZdzwvBfS1ma1c"}, {"t": "✨什麼是音程？音程怎麼創造出忐忑與溫柔？", "line": "🌙 晚安小書包", "age": "4–9歲", "theme": "節氣自然", "views": 2510, "compl": 23, "url": "http://www.ganjingworld.com/live/1igtj1o84h97cBaokvIHej0ZU1iv1c"}, {"t": "✨打開耳朵，跟著聲音去探險！", "line": "🌙 晚安小書包", "age": "4–9歲", "theme": "品德修養", "views": 2252, "compl": 85, "url": "http://www.ganjingworld.com/live/1i53dinvhvl2PuADSijBezxxf18j1c"}, {"t": "✨（更新）打開耳朵，跟著配樂去探險！", "line": "🌙 晚安小書包", "age": "4–9歲", "theme": "音樂藝術", "views": 2116, "compl": 41, "url": "http://www.ganjingworld.com/live/1i7vr2huebo6RrnKmd1ZBk6e21mj1c"}, {"t": "✨音樂也會「橘變為枳」嗎？打開耳朵，跟著配樂去探險！", "line": "🌙 晚安小書包", "age": "4–9歲", "theme": "音樂藝術", "views": 1838, "compl": 67, "url": "http://www.ganjingworld.com/live/1ia9vu1rb774YBOMwSW9QnhYO1f61c"}, {"t": "勇氣與包容的交響詩：音樂是怎麼表現不同人物的特性？", "line": "🌙 晚安小書包", "age": "4–9歲", "theme": "音樂藝術", "views": 1835, "compl": 21, "url": "http://www.ganjingworld.com/live/1icdpoo7krl4RUtmyOhVbOMXZ1pl1c"}, {"t": "小書包新欄目出爐了，聲音的探險開始了🎶", "line": "🌙 晚安小書包", "age": "4–9歲", "theme": "音樂藝術", "views": 1544, "compl": 54, "url": "http://www.ganjingworld.com/live/1i01u7neidt6QU3qi65Xvumfb1891c"}, {"t": "✨聽～秦檜的心情變化，配樂是怎麼跟我們說的？", "line": "🌙 晚安小書包", "age": "4–9歲", "theme": "品德修養", "views": 2, "compl": 0, "url": "http://www.ganjingworld.com/live/1ij11ecgdc95FCYNIwr0UFLCQ1ma1c"}, {"t": "你在一片江雪裡的心情會是甚麼樣？你心中的江雪圖又是甚麼模樣？一起領略柳宗元詩裡的意與象", "line": "📖 博學小書包", "age": "9–15歲", "theme": "傳統故事", "views": 8443, "compl": 25, "url": "http://www.ganjingworld.com/video/1h8gp0107mj3OlifBtazhTBYm1ua1c"}, {"t": "😲 什麼！答錯謎題會被處死？歌劇杜蘭朵公主的故事", "line": "📖 博學小書包", "age": "9–15歲", "theme": "傳統故事", "views": 7719, "compl": 38, "url": "http://www.ganjingworld.com/video/1gqin82h7ku5DR7XUrhllKm5B18a1c"}, {"t": "勇者能敵萬軍，卻敵不過內心的執念，英雄如何逃脫宿命？🔥", "line": "📖 博學小書包", "age": "9–15歲", "theme": "傳統故事", "views": 7656, "compl": 49, "url": "http://www.ganjingworld.com/live/1hf3pp4ajk27aOf6GzN90u9Yn1r01c"}, {"t": "你知道寒冷的冬天也能記錄成一幅彩色的畫嗎？跟著古人的智慧，把你的冬天畫出來吧！", "line": "📖 博學小書包", "age": "9–15歲", "theme": "神話神仙", "views": 6768, "compl": 15, "url": "http://www.ganjingworld.com/video/1h8v952hcjaBGSsb0Vl9Pqw0V1hm1c"}, {"t": "威廉是誰？他做了甚麼會讓英文變難了？👑", "line": "📖 博學小書包", "age": "9–15歲", "theme": "英語啟蒙", "views": 4284, "compl": 23, "url": "http://www.ganjingworld.com/video/1gt12shuuk47282Rybu2k8JtL1cu1c"}, {"t": "蘇東坡爲什麽聽到「一擔重泥擋子路」會大吃一驚 😲", "line": "📖 博學小書包", "age": "9–15歲", "theme": "成語素養", "views": 3541, "compl": 30, "url": "http://www.ganjingworld.com/video/1gli1usk4277yygKTKV4UnEo91cs1c"}, {"t": "傳說朱元璋當皇帝之前得到高人指點，當他急忙趕到金陵後，不僅讓當地染疫的人痊癒，他還發了財 🍹", "line": "📖 博學小書包", "age": "9–15歲", "theme": "歷史人物", "views": 3366, "compl": 96, "url": "http://www.ganjingworld.com/video/1gt8scbt64024kNh7C5V5lNcE11q1c"}, {"t": "黃鶴樓·崔顥 🏯 詩人怎麽會問：「哪裡是我的故鄉？」？", "line": "📖 博學小書包", "age": "9–15歲", "theme": "傳統故事", "views": 3166, "compl": 51, "url": "http://www.ganjingworld.com/video/1gj5aq402h92IGyhJXyseVcdQ1dk1c"}, {"t": "太白山神不再靈驗？蘇東坡百思不得其解", "line": "📖 博學小書包", "age": "9–15歲", "theme": "神話神仙", "views": 2697, "compl": 25, "url": "http://www.ganjingworld.com/video/1ghm5sqsk551NTuByN9ncaFwI1m01c"}, {"t": "堂堂正正玩水去💦 這可是至聖先師孔夫子都認同的事情呢❗", "line": "📖 博學小書包", "age": "9–15歲", "theme": "歷史人物", "views": 2606, "compl": 43, "url": "http://www.ganjingworld.com/video/1gjip7r3nvu1bOU9bWP87aeZI1k91c"}, {"t": "別怕！這樣就能把鬼怪趕跑了👻 💥", "line": "📖 博學小書包", "age": "9–15歲", "theme": "傳統故事", "views": 1682, "compl": 43, "url": "http://www.ganjingworld.com/video/1gfda4pi27g2UXbscu6rfSGTB1b91c"}, {"t": "想不想把春天咬上一口？", "line": "📖 博學小書包", "age": "9–15歲", "theme": "節氣自然", "views": 1502, "compl": 59, "url": "http://www.ganjingworld.com/video/1geo9ttpc2s3lcnBKbZt1aDVT19l1c"}, {"t": "從春聯到字謎，我會設計燈謎了", "line": "📖 博學小書包", "age": "9–15歲", "theme": "節氣自然", "views": 1271, "compl": 49, "url": "http://www.ganjingworld.com/video/1gfp37867tiXSVCDsuNWiv8oe15b1c"}, {"t": "詩歌 泉源（泰戈爾）", "line": "📖 博學小書包", "age": "9–15歲", "theme": "傳統故事", "views": 1048, "compl": 68, "url": "http://www.ganjingworld.com/video/1gd4m4eehgg2jTQvxakrP9wwh1os1c"}, {"t": "王維 鳥鳴澗", "line": "📖 博學小書包", "age": "9–15歲", "theme": "品德修養", "views": 834, "compl": 33, "url": "http://www.ganjingworld.com/video/1g5rmntirsu2Kclz4FxuqME3g1c91c"}, {"t": "藺相如與廉頗將軍出場解說！一起讀懂《將相和》，和學成語", "line": "📚 成語小書包", "age": "6–12歲", "theme": "成語素養", "views": 4489, "compl": 48, "url": "http://www.ganjingworld.com/live/1i8881prtvp361kD7useL8aYu1u51c"}, {"t": "6分鐘學會6個成語 ✅ 懂內涵 ✅ 記得住 ✅ 還會用", "line": "📚 成語小書包", "age": "6–12歲", "theme": "成語素養", "views": 3596, "compl": 49, "url": "http://www.ganjingworld.com/live/1hvjj1b8tcm6Q2vERNp6H6t3z1e11c"}, {"t": "從「大盜的蜘蛛絲」學成語 ✅ 記得住 ✅ 還會用", "line": "📚 成語小書包", "age": "6–12歲", "theme": "成語素養", "views": 3388, "compl": 42, "url": "http://www.ganjingworld.com/live/1i0ef5vdi7e68EQv9iT8ZnHx51oj1c"}, {"t": "5分鐘學會5個成語 ✅ 記得住 ✅ 還會用", "line": "📚 成語小書包", "age": "6–12歲", "theme": "成語素養", "views": 2819, "compl": 100, "url": "http://www.ganjingworld.com/live/1hp04qjp8214gjqLSr0NyY2I21vk1c"}, {"t": "：5分鐘學會5個成語 ✅ 記得住 ✅ 還會用", "line": "📚 成語小書包", "age": "6–12歲", "theme": "成語素養", "views": 2495, "compl": 43, "url": "http://www.ganjingworld.com/live/1hv23g4bvqtdxYbEx8mpBygzB1b11c"}, {"t": "一口氣學會5個成語 ✅懂內涵 ✅記得住 ✅還會用 🔥 限時免費", "line": "📚 成語小書包", "age": "6–12歲", "theme": "成語素養", "views": 2235, "compl": 35, "url": "http://www.ganjingworld.com/live/1i0te8enlor2YuOvUYW128LZT1i61c"}, {"t": "學成語很輕鬆 ✅懂內涵 ✅記得住 ✅還會用", "line": "📚 成語小書包", "age": "6–12歲", "theme": "成語素養", "views": 2170, "compl": 100, "url": "http://www.ganjingworld.com/live/1i706uaocpm3WAimD3O4QM69N1th1c"}, {"t": "5分鐘學會5個成語 ✅懂內涵 ✅記得住 ✅還會用", "line": "📚 成語小書包", "age": "6–12歲", "theme": "成語素養", "views": 2134, "compl": 29, "url": "http://www.ganjingworld.com/live/1i0m7986oqbekUy1B0EbY3yzb1sd1c"}, {"t": "6分鐘學會6個成語 ✅ 記得住 ✅ 還會用", "line": "📚 成語小書包", "age": "6–12歲", "theme": "成語素養", "views": 2061, "compl": 51, "url": "http://www.ganjingworld.com/live/1hui78tvn152wkJl0KhtAVgWH1071c"}, {"t": "看包公斷案，學5個成語 ✅懂內涵 ✅記得住 ✅還會用", "line": "📚 成語小書包", "age": "6–12歲", "theme": "成語素養", "views": 1861, "compl": 100, "url": "http://www.ganjingworld.com/live/1i1l3cs55ar4KHg2rNnaz9jTg1eg1c"}, {"t": "思考與討論，提升閱讀素養+學會用成語 ✅懂內涵 ✅記得住 ✅還會用", "line": "📚 成語小書包", "age": "6–12歲", "theme": "成語素養", "views": 1845, "compl": 75, "url": "http://www.ganjingworld.com/live/1i4c7icb2g13hCDv1RQTnuF9f1d61c"}, {"t": "「胯下之辱」時，韓信心裡怎麼想？", "line": "📚 成語小書包", "age": "6–12歲", "theme": "成語素養", "views": 1816, "compl": 35, "url": "http://www.ganjingworld.com/live/1i9tfiir7ju2jpmLHqlhCMvPU1kj1c"}, {"t": "閱讀素養+學成語 ✅懂內涵 ✅記得住 ✅還會用", "line": "📚 成語小書包", "age": "6–12歲", "theme": "成語素養", "views": 1803, "compl": 67, "url": "http://www.ganjingworld.com/live/1i7m9l91kps21tunFwzThq7ss1di1c"}, {"t": "神射手和賣油老人的對話中，還隱藏哪些學問呢？", "line": "📚 成語小書包", "age": "6–12歲", "theme": "成語素養", "views": 1604, "compl": 38, "url": "http://www.ganjingworld.com/live/1i8ntvpdnb94sQ5vEJOLFMfAq1me1c"}, {"t": "你是怎麼知道，他們真的瞬間移動了兩千里？", "line": "📚 成語小書包", "age": "6–12歲", "theme": "成語素養", "views": 1604, "compl": 45, "url": "http://www.ganjingworld.com/live/1iau8jnjhgv65Fjir7zxrP9XZ1441c"}, {"t": "從問題中思考，提升閱讀素養+學會5個成語 ✅懂內涵 ✅記得住 ✅還會用", "line": "📚 成語小書包", "age": "6–12歲", "theme": "成語素養", "views": 1594, "compl": 49, "url": "http://www.ganjingworld.com/live/1i4pthcccpa4NN7CRAP8eX7yL1ri1c"}, {"t": "咻一下⚡️學會5個成語 ✅懂內涵 ✅記得住 ✅還會用", "line": "📚 成語小書包", "age": "6–12歲", "theme": "成語素養", "views": 1587, "compl": 67, "url": "http://www.ganjingworld.com/live/1i3243m7rkj6Do2bztMnttpCD1mn1c"}, {"t": "竇燕山為什麼願意做這麼大的轉變？", "line": "📚 成語小書包", "age": "6–12歲", "theme": "成語素養", "views": 1556, "compl": 46, "url": "http://www.ganjingworld.com/live/1ibh14vl7do6mj4dZfm6U1GzP1ik1c"}, {"t": "討論故事，提升閱讀素養+學會5️⃣個成語 ✅懂內涵 ✅記得住 ✅還會用", "line": "📚 成語小書包", "age": "6–12歲", "theme": "品德修養", "views": 1525, "compl": 36, "url": "http://www.ganjingworld.com/live/1i50e1h7qu32K5SM2QI0xXZBi17q1c"}, {"t": "跑步學會6個成語🏃‍♂️+停下思考與討論「我想要當大地主」，提升閱讀素養", "line": "📚 成語小書包", "age": "6–12歲", "theme": "成語素養", "views": 1186, "compl": 93, "url": "http://www.ganjingworld.com/live/1i3lhopfpqt2RED43Tzrc9mkN19d1c"}, {"t": "培養孩子思考力（一）🌱", "line": "📝 家長充電站", "age": "家長", "theme": "傳統故事", "views": 2690, "compl": 64, "url": "http://www.ganjingworld.com/video/1gqt82imbdg1ZQcmCYV60UhnT1aq1c"}, {"t": "怎麽協助孩子啓動思考力？", "line": "📝 家長充電站", "age": "家長", "theme": "傳統故事", "views": 2240, "compl": 37, "url": "http://www.ganjingworld.com/video/1h2qa57aa0h274kCJdupq94gA1k41c"}, {"t": "培養孩子思考力（二）🌱", "line": "📝 家長充電站", "age": "家長", "theme": "傳統故事", "views": 1520, "compl": 82, "url": "http://www.ganjingworld.com/video/1gqtdqhif1g3kx7UTn8kQGmFr19i1c"}, {"t": "培養孩子思考力（五）🌱", "line": "📝 家長充電站", "age": "家長", "theme": "傳統故事", "views": 1276, "compl": 38, "url": "http://www.ganjingworld.com/video/1gr45gt23rd6q2V3JngMQ47451s41c"}, {"t": "培養孩子思考力（六）🌱", "line": "📝 家長充電站", "age": "家長", "theme": "傳統故事", "views": 1031, "compl": 47, "url": "http://www.ganjingworld.com/video/1gr45nbl1cr57zMHN81v0SXCv1o61c"}, {"t": "培養孩子思考力（四）🌱", "line": "📝 家長充電站", "age": "家長", "theme": "傳統故事", "views": 865, "compl": 46, "url": "http://www.ganjingworld.com/video/1gr450lc91fnmRqKSlQcOwo9H1jf1c"}, {"t": "培養孩子思考力（三）🌱", "line": "📝 家長充電站", "age": "家長", "theme": "傳統故事", "views": 845, "compl": 62, "url": "http://www.ganjingworld.com/video/1gr1d780her1I9VTQ9Y1ODaEE1hj1c"}];
+const LINES = [{"name": "🌙 晚安小書包", "age": "4–9歲", "color": "#3f6fb0"}, {"name": "✨ 故事小書包", "age": "7–12歲", "color": "#c9803a"}, {"name": "📚 成語小書包", "age": "6–12歲", "color": "#2e8b6b"}, {"name": "📖 博學小書包", "age": "9–15歲", "color": "#7a5aa6"}, {"name": "🌏 雙語小書包", "age": "6–12歲", "color": "#d96a9a"}, {"name": "📝 家長充電站", "age": "家長", "color": "#8a8f57"}];
+const TC = {"傳統故事": "#8a8f57", "神話神仙": "#7a5aa6", "成語素養": "#2e8b6b", "歷史人物": "#c0392b", "品德修養": "#c9803a", "節氣自然": "#3f9b6f", "音樂藝術": "#d96a9a", "西方經典": "#3f6fb0", "英語啟蒙": "#d96a9a"};
+const lineColor = {}; LINES.forEach(l=>lineColor[l.name]=l.color);
+const maxV = Math.max(...EPS.map(e=>e.views));
+
+// theme chips (display)
+const themes = [...new Set(EPS.map(e=>e.theme))];
+const tcWrap = document.getElementById('themechips');
+const themeCount = {};
+EPS.forEach(e=>themeCount[e.theme]=(themeCount[e.theme]||0)+1);
+themes.sort((a,b)=>themeCount[b]-themeCount[a]).forEach(t=>{
+  const s=document.createElement('span'); s.className='fbtn'; s.style.cursor='default';
+  s.style.borderLeft='5px solid '+(TC[t]||'#999');
+  s.innerHTML=t+' <b style="color:'+(TC[t]||'#999')+'">'+themeCount[t]+'</b>';
+  tcWrap.appendChild(s);
+});
+
+// line filters
+const lineNames = ['全部', ...LINES.map(l=>l.name)];
+const lf = document.getElementById('lineFilters');
+let active='全部';
+lineNames.forEach(n=>{
+  const b=document.createElement('button'); b.className='fbtn'+(n==='全部'?' on':'');
+  b.textContent = n==='全部'? '全部 '+EPS.length : n;
+  b.onclick=()=>{active=n;[...lf.children].forEach(c=>c.classList.remove('on'));b.classList.add('on');render();};
+  lf.appendChild(b);
+});
+
+const tbody=document.querySelector('#eptbl tbody');
+const count=document.getElementById('count');
+function render(){
+  const rows = EPS.filter(e=>active==='全部'||e.line===active);
+  count.textContent='顯示 '+rows.length+' 集';
+  tbody.innerHTML = rows.map(e=>{
+    const w=Math.max(3,Math.round(e.views/maxV*100));
+    const lc=lineColor[e.line]||'#666'; const tcc=TC[e.theme]||'#888';
+    return `<tr>
+      <td><a href="${e.url}" target="_blank">${e.t}</a></td>
+      <td><span class="tag" style="background:${lc}">${e.line}</span></td>
+      <td>${e.age}</td>
+      <td><span class="tag" style="background:${tcc}">${e.theme}</span></td>
+      <td>${e.compl}%</td>
+      <td><div class="bar-cell"><span class="b" style="width:${w}px;background:${lc}"></span><small style="color:#a59c86">${e.views.toLocaleString()}</small></div></td>
+    </tr>`;
+  }).join('');
+}
+render();
+</script>
+</body>
+</html>

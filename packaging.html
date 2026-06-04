@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>樂學小書包 · 課程包裝優化建議</title>
+<style>
+:root{--jade:#1f6b4f;--jade2:#2e8b6b;--gold:#c9803a;--amber:#e0a13c;--red:#c0392b;
+  --ink:#2b2b29;--cream:#faf6ee;--cream2:#f3ecdd;--line:#e4dcc8;--muted:#6f6a5d;--paper:#fffdf8;}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:"PingFang TC","Microsoft JhengHei","Noto Sans TC",sans-serif;background:var(--cream);color:var(--ink);line-height:1.75}
+.wrap{max-width:1040px;margin:0 auto;padding:0 22px}
+.hero{background:radial-gradient(1000px 400px at 85% -10%,rgba(224,161,60,.18),transparent 60%),linear-gradient(150deg,#1f6b4f,#143f2e);color:#fdf8ec;padding:64px 0 50px;border-bottom:6px solid var(--amber)}
+.hero .eyebrow{color:var(--amber);font-weight:800;letter-spacing:3px;font-size:12px;margin-bottom:12px}
+.hero h1{font-size:38px;letter-spacing:2px}
+.hero p{color:#e9e2cf;max-width:720px;margin-top:12px;font-size:17px}
+section{padding:56px 0;border-bottom:1px solid var(--line)}
+.eyebrow{color:var(--gold);font-weight:800;letter-spacing:3px;font-size:12px;text-transform:uppercase;margin-bottom:10px}
+h2.sec{font-size:27px;color:var(--jade);margin-bottom:6px}
+.sub{color:var(--muted);max-width:780px;margin-bottom:28px}
+.grid{display:grid;gap:16px}.g2{grid-template-columns:1fr 1fr}.g3{grid-template-columns:repeat(3,1fr)}
+@media(max-width:760px){.g2,.g3{grid-template-columns:1fr}}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:22px}
+.card h3{color:var(--jade);font-size:17px;margin-bottom:8px}
+.callout{background:linear-gradient(180deg,#fff8e9,#fdf3da);border:1px solid #ecd9a8;border-left:5px solid var(--amber);border-radius:10px;padding:16px 20px;margin:20px 0}
+.callout b{color:var(--gold)}
+.toc{position:sticky;top:0;background:rgba(250,246,238,.95);backdrop-filter:blur(6px);border-bottom:1px solid var(--line);z-index:20;padding:11px 0}
+.toc .wrap{display:flex;gap:6px;flex-wrap:wrap;font-size:13px}
+.toc a{color:#5b5648;text-decoration:none;padding:5px 11px;border-radius:18px;font-weight:600}
+.toc a:hover{background:var(--cream2);color:var(--jade)}
+
+/* before/after */
+.ba{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media(max-width:680px){.ba{grid-template-columns:1fr}}
+.ba .col{border-radius:14px;padding:20px}
+.ba .bad{background:#f7efe9;border:1px solid #e8d4c6}
+.ba .good{background:#eef5f0;border:1px solid #cfe3d6}
+.ba h4{font-size:15px;margin-bottom:10px}
+.ba .bad h4{color:#a9603e}.ba .good h4{color:var(--jade)}
+.ba ul{margin-left:18px;font-size:14px;color:#544f44}
+.ba li{margin:5px 0}
+
+/* knowledge card */
+.kcard{max-width:430px;background:#fff;border:1px solid var(--line);border-radius:16px;overflow:hidden;box-shadow:0 10px 30px rgba(31,107,79,.12)}
+.kcard .khead{background:linear-gradient(135deg,#c9803a,#9a571f);color:#fff;padding:18px 20px}
+.kcard .khead .kser{font-size:12px;font-weight:700;opacity:.9}
+.kcard .khead .ktitle{font-size:19px;font-weight:800;margin-top:3px}
+.kcard .kbody{padding:18px 20px}
+.krow{display:flex;gap:12px;align-items:flex-start;padding:10px 0;border-bottom:1px dashed var(--line)}
+.krow:last-child{border-bottom:none}
+.krow .ki{font-size:20px;width:26px;flex-shrink:0;text-align:center}
+.krow .kl{font-size:12px;font-weight:800;color:var(--gold);letter-spacing:1px;width:74px;flex-shrink:0}
+.krow .kv{font-size:14px;color:#3f3a31}
+.tagpill{display:inline-block;background:var(--cream2);color:#5b5648;font-size:12.5px;font-weight:700;padding:2px 9px;border-radius:11px;margin:2px 4px 2px 0}
+.legend5{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-top:8px}
+@media(max-width:680px){.legend5{grid-template-columns:1fr 1fr}}
+.l5{background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:14px;text-align:center}
+.l5 .ic{font-size:26px}.l5 b{display:block;color:var(--jade);font-size:14px;margin-top:6px}.l5 small{color:var(--muted);font-size:12px}
+
+/* outcome promise */
+.promise{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:0;overflow:hidden;border-top:5px solid var(--lc,#c9803a)}
+.promise .ph{padding:18px 22px;background:linear-gradient(135deg,rgba(0,0,0,.02),transparent)}
+.promise .ph .nm{font-size:20px;font-weight:800;color:var(--lc,#c9803a)}
+.promise .ph .ag{font-size:12px;font-weight:700;background:var(--cream2);color:#5b5648;padding:2px 10px;border-radius:12px;margin-left:8px}
+.promise .pb{padding:6px 22px 20px}
+.pline{display:flex;gap:10px;padding:10px 0;border-bottom:1px dashed var(--line)}
+.pline:last-child{border-bottom:none}
+.pline .pn{font-size:24px;font-weight:800;color:var(--lc,#c9803a);min-width:54px;line-height:1.1}
+.pline .pn small{font-size:12px;color:var(--muted);font-weight:600;display:block}
+.pline .pt{font-size:13.5px;color:#3f3a31}
+.pline .pt b{color:var(--ink)}
+.namechips{margin-top:4px}
+.nchip{display:inline-block;background:#f6f1e6;border:1px solid #e6dcc4;color:#6a5b3a;font-size:12px;padding:2px 8px;border-radius:10px;margin:2px 4px 0 0}
+
+/* big totals */
+.totals{display:grid;grid-template-columns:repeat(5,1fr);gap:14px}
+@media(max-width:760px){.totals{grid-template-columns:1fr 1fr}}
+.tot{background:linear-gradient(160deg,#1f6b4f,#17533c);color:#fdf8ec;border-radius:14px;padding:20px;text-align:center}
+.tot .n{font-size:32px;font-weight:800;color:var(--amber)}
+.tot .l{font-size:13px;color:#e3dcc8;margin-top:4px}
+
+/* collection viz */
+.collect{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+@media(max-width:680px){.collect{grid-template-columns:1fr}}
+.coll{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:18px}
+.coll h4{color:var(--jade);font-size:15px;margin-bottom:4px}
+.coll .desc{font-size:12.5px;color:var(--muted);margin-bottom:12px}
+.pips{display:flex;flex-wrap:wrap;gap:5px}
+.pip{width:22px;height:22px;border-radius:6px;background:var(--cream2);display:flex;align-items:center;justify-content:center;font-size:11px;color:#b3a987}
+.pip.on{background:var(--amber);color:#fff;font-weight:700}
+.tree{font-size:13px;color:#3f3a31}
+.flower{display:inline-block;margin:3px 6px 3px 0;padding:3px 10px;border-radius:14px;background:#eef5f0;border:1px solid #cfe3d6;color:var(--jade);font-size:12.5px;font-weight:600}
+.shelf{display:flex;gap:6px;flex-wrap:wrap}
+.book{width:34px;height:48px;border-radius:3px;display:flex;align-items:flex-end;justify-content:center;color:#fff;font-size:9px;font-weight:700;padding-bottom:3px;text-align:center;line-height:1.05}
+
+/* parent dashboard mock */
+.dash{background:#fff;border:1px solid var(--line);border-radius:16px;padding:22px;box-shadow:0 8px 26px rgba(31,107,79,.1)}
+.dash .dh{display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--line);padding-bottom:12px;margin-bottom:16px}
+.dash .dh b{color:var(--jade);font-size:16px}
+.dash .dh span{font-size:12px;color:var(--muted)}
+.metric{margin:12px 0}
+.metric .top{display:flex;justify-content:space-between;font-size:13.5px;font-weight:700;color:#544f44;margin-bottom:6px}
+.metric .bw{height:11px;background:var(--cream2);border-radius:6px;overflow:hidden}
+.metric .bw>span{display:block;height:100%;border-radius:6px}
+.steps{counter-reset:s;display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+@media(max-width:760px){.steps{grid-template-columns:1fr 1fr}}
+.step{background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:18px 16px;position:relative}
+.step:before{counter-increment:s;content:counter(s);position:absolute;top:-13px;left:16px;width:28px;height:28px;border-radius:50%;background:var(--gold);color:#fff;font-weight:800;display:flex;align-items:center;justify-content:center;font-size:14px}
+.step h4{color:var(--jade);font-size:14.5px;margin:6px 0 6px}
+.step p{font-size:13px;color:#544f44;margin:0}
+.note{font-size:12px;color:#a59c86;margin-top:10px}
+.foot{padding:46px 0;text-align:center;color:var(--muted);font-size:13px}
+</style>
+</head>
+<body>
+
+<div class="hero"><div class="wrap">
+  <div class="eyebrow">CURRICULUM PACKAGING · 課程包裝優化</div>
+  <h1>從「一集集故事」到「一張看得見的學習地圖」</h1>
+  <p>同樣的 150 集內容，差別在包裝。本文件提出讓家長一眼看懂「孩子學到什麼、學到哪、還差什麼」的具體做法——所有數字與名單都來自實際片庫盤點。</p>
+</div></div>
+
+<div class="toc"><div class="wrap">
+  <a href="#why">問題</a><a href="#engine">知識卡引擎</a><a href="#promise">成果承諾</a>
+  <a href="#totals">全IP成果</a><a href="#collect">知識收集</a><a href="#parent">家長視角</a><a href="#ops">落地</a>
+</div></div>
+
+<!-- WHY -->
+<section id="why"><div class="wrap">
+  <div class="eyebrow">問題與原則</div>
+  <h2 class="sec">家長真正想知道的不是「有幾集」，而是「孩子會變成什麼樣」</h2>
+  <p class="sub">目前內容以單集呈現，家長滑到的是一串好聽的故事，卻無法回答三個付費前的關鍵問題。包裝的任務，就是把「看了什麼」翻譯成「學會了什麼」。</p>
+  <div class="ba">
+    <div class="col bad"><h4>✗ 現在家長看到的</h4>
+      <ul><li>「孔融讓梨」「完璧歸趙」…一集集故事</li><li>不知道適不適合我家孩子的年齡</li><li>看完了，然後呢？學到什麼說不上來</li><li>感覺像免費 YouTube，憑什麼付費？</li></ul></div>
+    <div class="col good"><h4>✓ 包裝後家長看到的</h4>
+      <ul><li>「學完故事小書包，認識 10 位歷史人物、4 部世界經典」</li><li>每集標好適齡、品德、知識點</li><li>孩子的人物圖鑑 / 成語牆一格格點亮</li><li>看得到成長 → 值得訂閱、想續訂</li></ul></div>
+  </div>
+  <div class="callout"><b>一條原則：</b>每一集都要能回答「這集讓孩子<b>認識誰、學到什麼字詞、懂得什麼道理、練到什麼能力</b>」。把這件事系統化，就是體系感的來源。</div>
+</div></section>
+
+<!-- ENGINE -->
+<section id="engine"><div class="wrap">
+  <div class="eyebrow">包裝引擎</div>
+  <h2 class="sec">最小單位：每集一張「知識卡」（5 個固定標籤）</h2>
+  <p class="sub">給每一集標註同樣的 5 個維度。它同時是家長的「成分表」、孩子的「收集點」、後台的「檢索鍵」，也直接餵給勳章與成長冊。</p>
+  <div class="legend5">
+    <div class="l5"><div class="ic">📜</div><b>出處</b><small>典籍 / 經典來源</small></div>
+    <div class="l5"><div class="ic">👤</div><b>人物</b><small>歷史人物 / 角色</small></div>
+    <div class="l5"><div class="ic">💎</div><b>品德</b><small>對應價值觀</small></div>
+    <div class="l5"><div class="ic">🧩</div><b>知識點</b><small>成語/詩詞/節氣/英文</small></div>
+    <div class="l5"><div class="ic">🎯</div><b>能力</b><small>素養：理解/思辨/表達</small></div>
+  </div>
+  <div style="margin-top:24px;display:flex;gap:26px;flex-wrap:wrap;align-items:flex-start">
+    <div class="kcard">
+      <div class="khead"><div class="kser">✨ 故事小書包 · 7–12 歲 · 第 04 集</div>
+        <div class="ktitle">完璧歸趙：藺相如怎麼智取秦王？</div></div>
+      <div class="kbody">
+        <div class="krow"><span class="ki">📜</span><span class="kl">出處</span><span class="kv">《史記・廉頗藺相如列傳》</span></div>
+        <div class="krow"><span class="ki">👤</span><span class="kl">人物</span><span class="kv"><span class="tagpill">藺相如</span><span class="tagpill">廉頗</span><span class="tagpill">秦王</span></span></div>
+        <div class="krow"><span class="ki">💎</span><span class="kl">品德</span><span class="kv"><span class="tagpill">智慧機智</span><span class="tagpill">仁義守信</span></span></div>
+        <div class="krow"><span class="ki">🧩</span><span class="kl">知識點</span><span class="kv"><span class="tagpill">成語・完璧歸趙</span><span class="tagpill">成語・負荊請罪</span></span></div>
+        <div class="krow"><span class="ki">🎯</span><span class="kl">能力</span><span class="kv"><span class="tagpill">聆聽理解</span><span class="tagpill">複述表達</span></span></div>
+      </div>
+    </div>
+    <div style="flex:1;min-width:240px">
+      <div class="card"><h3>這張卡一次解決三件事</h3>
+        <p>① <b>家長</b>看「成分表」秒懂價值；<br>② <b>孩子</b>把人物、成語當點數收集；<br>③ <b>系統</b>用標籤自動生成成果承諾、收集冊與勳章。</p></div>
+      <div class="callout" style="margin-top:14px"><b>關鍵：</b>標籤是一次標註、長期復用。標好之後，後面所有「體系感」的呈現都自動長出來。</div>
+    </div>
+  </div>
+</div></section>
+
+<!-- PROMISE -->
+<section id="promise"><div class="wrap">
+  <div class="eyebrow">線層級包裝</div>
+  <h2 class="sec">每條產品線一張「學完你會獲得」承諾卡</h2>
+  <p class="sub">這是家長在系列頁最該先看到的東西。以下數字與名單<b>全部來自 150 集實際盤點</b>，不是行銷話術。故事小書包為深度範例，其餘為摘要。</p>
+
+  <div class="promise" style="--lc:#c9803a">
+    <div class="ph"><span class="nm">✨ 故事小書包</span><span class="ag">7–12 歲 · 50 集</span></div>
+    <div class="pb">
+      <div class="pline"><div class="pn">10<small>位人物</small></div><div class="pt"><b>認識 10 位歷史人物</b>，建立中國歷史的人物座標
+        <div class="namechips"><span class="nchip">諸葛亮</span><span class="nchip">藺相如</span><span class="nchip">廉頗</span><span class="nchip">孫臏</span><span class="nchip">唐玄宗</span><span class="nchip">韓愈</span><span class="nchip">孫叔敖</span><span class="nchip">葉法善</span><span class="nchip">羅公遠</span><span class="nchip">韓湘子</span></div></div></div>
+      <div class="pline"><div class="pn">4<small>部經典</small></div><div class="pt"><b>讀完 4 部中外經典名著</b>，與世界文學接軌
+        <div class="namechips"><span class="nchip">狄更斯《聖誕頌歌》</span><span class="nchip">托爾斯泰《人靠什麼活著》</span><span class="nchip">希臘神話・追日少年</span><span class="nchip">日本經典童話</span></div></div></div>
+      <div class="pline"><div class="pn">6<small>種品德</small></div><div class="pt"><b>內化 6 種核心品德</b>
+        <div class="namechips"><span class="nchip">善良</span><span class="nchip">孝順</span><span class="nchip">勇敢</span><span class="nchip">知足戒貪</span><span class="nchip">仁義守信</span><span class="nchip">報恩感恩</span></div></div></div>
+      <div class="pline"><div class="pn">4＋<small>個成語</small></div><div class="pt"><b>學會成語並會運用</b>：完璧歸趙、負荊請罪、才高八斗、點石成金…</div></div>
+      <div class="pline"><div class="pn">🎯<small>能力</small></div><div class="pt"><b>培養</b>閱讀理解、文化素養、是非思辨</div></div>
+    </div>
+  </div>
+
+  <div class="grid g2" style="margin-top:18px">
+    <div class="promise" style="--lc:#3f6fb0">
+      <div class="ph"><span class="nm">🌙 晚安小書包</span><span class="ag">4–9 歲 · 53 集</span></div>
+      <div class="pb">
+        <div class="pline"><div class="pn">14<small>位人物</small></div><div class="pt">司馬光、孔融、晏子、黃香、周處、西門豹、王羲之…</div></div>
+        <div class="pline"><div class="pn">9<small>種品德</small></div><div class="pt">善良・孝順・誠實・謙讓・勇敢・感恩・知足・機智・守信（含二十四孝）</div></div>
+        <div class="pline"><div class="pn">+<small>成語</small></div><div class="pt">守株待兔、負荊請罪…從睡前故事自然習得</div></div>
+      </div>
+    </div>
+    <div class="promise" style="--lc:#2e8b6b">
+      <div class="ph"><span class="nm">📚 成語小書包</span><span class="ag">6–12 歲 · 20 集</span></div>
+      <div class="pb">
+        <div class="pline"><div class="pn">100＋<small>個成語</small></div><div class="pt">每集 5–6 個，<b>累積逾百個成語</b>＋懂內涵、記得住、會運用</div></div>
+        <div class="pline"><div class="pn">📖<small>素養</small></div><div class="pt">每集附「停下來思考討論」，直接對接學校閱讀素養與寫作</div></div>
+        <div class="pline"><div class="pn">7<small>位人物</small></div><div class="pt">藺相如、廉頗、韓信、竇燕山…在故事中學成語</div></div>
+      </div>
+    </div>
+    <div class="promise" style="--lc:#7a5aa6">
+      <div class="ph"><span class="nm">📖 博學小書包</span><span class="ag">9–15 歲 · 15 集</span></div>
+      <div class="pb">
+        <div class="pline"><div class="pn">8<small>位人物</small></div><div class="pt">孔子、蘇東坡、柳宗元、王維、崔顥、朱元璋…</div></div>
+        <div class="pline"><div class="pn">2<small>部世界經典</small></div><div class="pt">普契尼歌劇《杜蘭朵》、泰戈爾詩</div></div>
+        <div class="pline"><div class="pn">🧠<small>通識</small></div><div class="pt">詩詞鑑賞、節氣文化、語言演變、跨域思辨</div></div>
+      </div>
+    </div>
+    <div class="promise" style="--lc:#d96a9a">
+      <div class="ph"><span class="nm">🌏 雙語小書包</span><span class="ag">6–12 歲 · 5 集</span></div>
+      <div class="pb">
+        <div class="pline"><div class="pn">🔤<small>英文</small></div><div class="pt">由<b>獲獎英文老師</b>帶領，從熟悉的故事自然學英文，不用硬背</div></div>
+        <div class="pline"><div class="pn">👂<small>能力</small></div><div class="pt">聽力理解、英文字彙、朗讀打卡——中文故事的英文橋接</div></div>
+      </div>
+    </div>
+  </div>
+  <p class="note">📝 家長充電站（7 集）非孩子課程，定位為訂閱者專屬的「培養孩子思考力」教養指引。</p>
+</div></section>
+
+<!-- TOTALS -->
+<section id="totals"><div class="wrap">
+  <div class="eyebrow">全 IP 成果總覽</div>
+  <h2 class="sec">一句話總承諾：「陪孩子讀完，他會認識一整座中華文化的人物與智慧」</h2>
+  <p class="sub">把六線加總，就是樂學小書包對家長的整體價值主張——用一行數字，把訂閱費說清楚。</p>
+  <div class="totals">
+    <div class="tot"><div class="n">28＋</div><div class="l">位歷史人物</div></div>
+    <div class="tot"><div class="n">100＋</div><div class="l">個成語</div></div>
+    <div class="tot"><div class="n">7</div><div class="l">部中外經典</div></div>
+    <div class="tot"><div class="n">9</div><div class="l">種核心品德</div></div>
+    <div class="tot"><div class="n">9</div><div class="l">大素養主題</div></div>
+  </div>
+  <div class="callout"><b>行銷可直接用：</b>「150 集、4–15 歲、認識 28 位歷史人物・100＋ 個成語・7 部中外經典・9 種品德——這不是影片庫，是孩子的一座文化學堂。」</div>
+</div></section>
+
+<!-- COLLECT -->
+<section id="collect"><div class="wrap">
+  <div class="eyebrow">把成果變成可收集</div>
+  <h2 class="sec">四本「收集冊」：抽象成果 → 孩子看得到、想集滿</h2>
+  <p class="sub">每張知識卡的標籤，自動點亮對應的收集冊。收集進度連動上一版的勳章系統——這是讓孩子主動想看下一集的引擎。</p>
+  <div class="collect">
+    <div class="coll"><h4>👤 歷史人物圖鑑</h4><div class="desc">聽到一位就點亮一格，集滿 28 位</div>
+      <div class="pips" id="figpips"></div></div>
+    <div class="coll"><h4>💎 品德樹</h4><div class="desc">每實踐一種品德，樹上開一朵花</div>
+      <div class="tree" id="valtree"></div></div>
+    <div class="coll"><h4>🧩 成語牆</h4><div class="desc">學一個貼一塊磚，目標 100 塊</div>
+      <div class="pips" id="idiompips"></div>
+      <div class="note">示意：已收集 38 / 100</div></div>
+    <div class="coll"><h4>📚 經典書架</h4><div class="desc">讀完一部，書架上一本新書</div>
+      <div class="shelf" id="shelf"></div></div>
+  </div>
+  <div class="callout"><b>連動勳章：</b>人物圖鑑集滿一個朝代 → 朝代徽章；成語牆每 20 塊 → 成語達人升級；經典書架集滿 → 世界文學小書蟲章。讓「收集」成為續看與續訂的動力。</div>
+</div></section>
+
+<!-- PARENT -->
+<section id="parent"><div class="wrap">
+  <div class="eyebrow">從家長角度呈現</div>
+  <h2 class="sec">三個觸點，讓家長隨時「看見成長」</h2>
+  <div class="grid g3">
+    <div class="card"><h3>① 成果語言</h3><p>每集標題下加一行白話承諾：<br>「<b>學完這集，孩子會認識藺相如，並學會成語『完璧歸趙』。</b>」家長不用猜。</p></div>
+    <div class="card"><h3>② 對接學校</h3><p>標註對應年級與素養：「適合中年級・對應閱讀素養與成語運用」。讓家長覺得「有用、跟得上課業」。</p></div>
+    <div class="card"><h3>③ 成長儀表板</h3><p>家長後台一眼看到孩子的累積：人物 12/28、成語 38/100、品德 6/9——把成效變數字。</p></div>
+  </div>
+  <div class="dash" style="margin-top:22px">
+    <div class="dh"><b>📊 小明的學習成長（家長後台示意）</b><span>本月 +6 集 · 連續學習 9 天</span></div>
+    <div class="metric"><div class="top"><span>👤 歷史人物圖鑑</span><span>12 / 28</span></div><div class="bw"><span style="width:43%;background:linear-gradient(90deg,#c9803a,#e0a13c)"></span></div></div>
+    <div class="metric"><div class="top"><span>🧩 成語牆</span><span>38 / 100</span></div><div class="bw"><span style="width:38%;background:linear-gradient(90deg,#2e8b6b,#3f9b6f)"></span></div></div>
+    <div class="metric"><div class="top"><span>💎 品德樹</span><span>6 / 9</span></div><div class="bw"><span style="width:67%;background:linear-gradient(90deg,#7a5aa6,#9a7ec0)"></span></div></div>
+    <div class="metric"><div class="top"><span>📚 經典書架</span><span>3 / 7</span></div><div class="bw"><span style="width:43%;background:linear-gradient(90deg,#3f6fb0,#5d8ad0)"></span></div></div>
+    <p class="note">家長每週收到一封「成長週報」：本週認識了誰、學會哪些成語、推薦接下來看哪一集 → 提升黏著與續訂。</p>
+  </div>
+</div></section>
+
+<!-- OPS -->
+<section id="ops"><div class="wrap">
+  <div class="eyebrow">如何落地</div>
+  <h2 class="sec">一次性盤點，長期復用</h2>
+  <p class="sub">所有「體系感」都長自同一份結構化標註。建議在內容庫為每集補上 5 個欄位，後續呈現全部自動生成。</p>
+  <div class="steps">
+    <div class="step"><h4>建欄位</h4><p>內容庫每集加 5 欄：出處・人物・品德・知識點・能力。</p></div>
+    <div class="step"><h4>標 150 集</h4><p>依本盤點批量標註（多數可沿用現有 hashtag），約 1–2 週。</p></div>
+    <div class="step"><h4>自動生成</h4><p>知識卡、成果承諾、收集冊、家長儀表板由標籤自動產出。</p></div>
+    <div class="step"><h4>對接勳章</h4><p>收集進度接上既有勳章與成長冊，形成完整閉環。</p></div>
+  </div>
+  <div class="callout"><b>優先順序建議：</b>先把<b>故事小書包</b>與<b>成語小書包</b>標好（人物與成語最具賣點、最易做出體系感），作為首批上線的旗艦線，驗證家長反應後再推全線。</div>
+</div></section>
+
+<div class="foot"><div class="wrap">
+  樂學小書包 · 課程包裝優化建議　|　數據來源：150 集授權片庫實際盤點（標題與標籤實體抽取）
+</div></div>
+
+<script>
+// figure pips
+const FIGS=["包公","司馬光","周處","唐玄宗","孔子","孔融","孫叔敖","孫臏","岳飛","崔顥","廉頗","晏子","朱元璋","柳宗元","王維","王羲之","秦檜","竇燕山","羅公遠","葉法善","藺相如","蘇東坡","西門豹","諸葛亮","韓信","韓愈","韓湘子","黃香"];
+const fp=document.getElementById('figpips');
+FIGS.forEach((f,i)=>{const d=document.createElement('div');d.className='pip'+(i<12?' on':'');d.textContent=i<12?f[0]:'';d.title=f;fp.appendChild(d);});
+// idiom pips 100 (38 on)
+const ip=document.getElementById('idiompips');
+for(let i=0;i<100;i++){const d=document.createElement('div');d.className='pip'+(i<38?' on':'');d.style.width='13px';d.style.height='13px';ip.appendChild(d);}
+// value tree
+const VALS=["善良","孝順","誠實","謙讓","勇敢","報恩感恩","知足戒貪","智慧機智","仁義守信"];
+document.getElementById('valtree').innerHTML=VALS.map((v,i)=>`<span class="flower" style="${i>=6?'opacity:.4':''}">${i<6?'🌸':'🌱'} ${v}</span>`).join('');
+// shelf
+const BOOKS=[["聖誕頌歌","#c0392b"],["人靠什麼活著","#3f6fb0"],["希臘神話","#c9803a"],["日本童話","#2e8b6b"],["杜蘭朵","#7a5aa6"],["泰戈爾詩","#8a8f57"],["格列佛","#a23e6c"]];
+document.getElementById('shelf').innerHTML=BOOKS.map((b,i)=>`<div class="book" style="background:${i<3?b[1]:'#cfc6b0'}">${i<3?b[0]:''}</div>`).join('');
+</script>
+</body>
+</html>
