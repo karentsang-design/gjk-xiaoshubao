@@ -197,7 +197,9 @@ h2.t{color:var(--jade);font-size:24px;margin-bottom:4px}
 .hero-stats .hs{font-size:13px;color:#3a4b59;font-weight:600;white-space:nowrap}
 .hero-stats .hs b{font-size:22px;color:var(--jade);font-weight:800;margin-right:2px;letter-spacing:.5px}
 .hero-stats .div{color:#b9d3ea;font-size:13px}
-.lp-hero h1{font-size:40px;letter-spacing:1px;line-height:1.26;margin-bottom:12px;color:#143a5e;text-shadow:0 1px 0 rgba(255,255,255,.7)}
+.lp-hero h1{font-size:40px;letter-spacing:.5px;line-height:1.26;margin-bottom:12px;color:#143a5e;text-shadow:0 1px 0 rgba(255,255,255,.7);white-space:nowrap}
+.lp-hero>*{max-width:none}
+.lp-hero p,.hero-stats{max-width:360px}
 .lp-hero p{font-size:14px;color:#3a4b59;max-width:300px;margin-bottom:16px;line-height:1.7}
 .lp-cta{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
 .lp-cta .btn{width:auto;margin:0;padding:12px 26px}
@@ -248,7 +250,7 @@ h2.t{color:var(--jade);font-size:24px;margin-bottom:4px}
 .vs-ribbon{position:absolute;top:12px;right:-34px;background:var(--red);color:#fff;font-size:11px;font-weight:800;padding:3px 38px;transform:rotate(45deg);z-index:2}
 @media(max-width:760px){.vs-op{display:none}.vs-row{display:grid;grid-template-columns:1fr 1fr}.vs-token{grid-column:1/-1}.vs-item{width:auto}}
 /* 四大福利 mockup 圖卡 */
-.benefit-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:12px}
+.benefit-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin:12px auto 0;max-width:780px}
 @media(max-width:760px){.benefit-grid{grid-template-columns:1fr}}
 .bcard{position:relative;background:#fff;border:1px solid var(--line);border-radius:18px;overflow:hidden;box-shadow:0 10px 30px rgba(20,136,224,.10);transition:transform .18s, box-shadow .18s}
 .bcard:hover{transform:translateY(-4px);box-shadow:0 18px 42px rgba(20,136,224,.20)}
@@ -345,13 +347,18 @@ h2.t{color:var(--jade);font-size:24px;margin-bottom:4px}
 .sticker-card{position:relative;background:#fff;border:1px solid var(--line);border-radius:16px;overflow:hidden;box-shadow:0 12px 30px rgba(20,136,224,.14)}
 .sticker-card img{display:block;width:100%;height:auto}
 .sticker-card .cardlabel{padding:11px 14px;font-size:13px;font-weight:800;color:var(--jade);border-top:1px solid var(--line);text-align:center}
-.sticker-ribbon{position:absolute;top:15px;right:-40px;background:linear-gradient(135deg,#e2433a,#c0392b);color:#fff;font-size:12px;font-weight:800;letter-spacing:.5px;padding:6px 46px;transform:rotate(45deg);z-index:2;box-shadow:0 3px 8px rgba(0,0,0,.25)}
+.sticker-ribbon{position:absolute;top:20px;right:-54px;width:180px;text-align:center;background:linear-gradient(135deg,#e2433a,#c0392b);color:#fff;font-size:12px;font-weight:800;letter-spacing:.5px;padding:6px 0;transform:rotate(45deg);z-index:2;box-shadow:0 3px 8px rgba(0,0,0,.25)}
 .figsticker{width:96px;height:96px;object-fit:contain;display:block;filter:drop-shadow(0 4px 6px rgba(0,0,0,.22))}
 .coearn{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:10px}
 @media(max-width:760px){.coearn{grid-template-columns:1fr 1fr}}
 .coearn .ce{background:linear-gradient(180deg,#eaf4fd,#f6fbff);border:1px solid #cfe2f2;border-radius:14px;padding:18px 14px;text-align:center}
 .coearn .ce .em{font-size:28px}.coearn .ce h5{color:var(--jade);font-size:14px;margin:8px 0 5px}.coearn .ce p{font-size:12.5px;color:#3f5a4c;margin:0;line-height:1.5}
 .sub-h{font-size:18px;color:var(--jade);font-weight:800;text-align:center;margin-bottom:4px}
+.agelad{max-width:560px;margin:6px auto 0;display:flex;flex-direction:column;gap:10px}
+.agelad .ar{display:flex;align-items:center;gap:14px;background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:12px 16px}
+.agelad .age{flex:0 0 auto;min-width:70px;text-align:center;font-weight:800;color:#fff;background:linear-gradient(135deg,#1593ee,#0e6fc4);border-radius:20px;padding:5px 10px;font-size:13px}
+.agelad .ad{font-size:14px;color:#3a4b59}.agelad .ad b{color:var(--jade)}
+.age-note{max-width:560px;margin:12px auto 0;text-align:center;font-size:12.5px;color:#5f7585;background:#eaf4fd;border-radius:10px;padding:9px 14px}
 </style>
 </head>
 <body>
@@ -375,7 +382,8 @@ h2.t{color:var(--jade);font-size:24px;margin-bottom:4px}
         <i style="left:62%;bottom:48px;font-size:14px;animation-duration:5.6s;animation-delay:3.6s">★</i>
         <i style="left:55%;bottom:38px;font-size:10px;animation-duration:6.4s;animation-delay:4.4s">✦</i>
       </div>
-      <h1>孩子愛聽的故事<br>聽出品格與文化</h1>
+      <h1>孩子愛看的故事<br>學得到的知識品格</h1>
+      <p>中華傳統文化為根、西方經典為翼，陪孩子長大。輔以繪本作業，把「看過」變「學會」。</p>
       <div class="hero-stats">
         <span class="hs"><b>150</b> 堂故事課</span><span class="div">｜</span>
         <span class="hs"><b>150</b> 份繪本作業</span><span class="div">｜</span>
@@ -416,6 +424,18 @@ h2.t{color:var(--jade);font-size:24px;margin-bottom:4px}
         <div class="lp-num"><div class="n">100+</div><div class="l">個成語</div></div>
         <div class="lp-num"><div class="n">7</div><div class="l">部中外經典</div></div>
         <div class="lp-num"><div class="n">9</div><div class="l">種核心品德</div></div>
+      </div>
+
+      <div style="margin-top:40px">
+        <div class="sub-h">🎯 孩子幾歲，聽什麼</div>
+        <div class="lp-hsub">從睡前故事到思辨表達，一路陪到 15 歲。</div>
+        <div class="agelad">
+          <div class="ar"><span class="age">4–6 歲</span><span class="ad"><b>睡前故事</b>，聽出好品格與安全感</span></div>
+          <div class="ar"><span class="age">6–9 歲</span><span class="ad"><b>傳統故事＋成語入門</b>，愛上閱讀</span></div>
+          <div class="ar"><span class="age">9–12 歲</span><span class="ad"><b>歷史人物・閱讀素養</b>，累積文化底蘊</span></div>
+          <div class="ar"><span class="age">12–15 歲</span><span class="ad"><b>詩詞通識・思辨表達</b>，談吐有內涵</span></div>
+        </div>
+        <div class="age-note">🌏 雙語故事橫跨 6–12 歲，從熟悉的故事自然學英文</div>
       </div>
 
       <div style="margin-top:40px">
