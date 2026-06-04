@@ -355,10 +355,12 @@ h2.t{color:var(--jade);font-size:24px;margin-bottom:4px}
 .coearn .ce .em{font-size:28px}.coearn .ce h5{color:var(--jade);font-size:14px;margin:8px 0 5px}.coearn .ce p{font-size:12.5px;color:#3f5a4c;margin:0;line-height:1.5}
 .sub-h{font-size:18px;color:var(--jade);font-weight:800;text-align:center;margin-bottom:4px}
 .agechart{max-width:700px;margin:8px auto 0;display:flex;flex-direction:column;gap:10px}
-.agechart .acr{display:flex;align-items:center;gap:12px;background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:13px 16px}
+.agechart .acr{display:flex;align-items:center;gap:14px;background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:14px 18px}
 .agechart .acage{flex:0 0 auto;min-width:66px;font-weight:800;color:var(--jade);font-size:14px}
-.agechart .acbar{flex:0 0 auto;height:14px;border-radius:7px;background:linear-gradient(90deg,#3ba3f0,#f6b40c)}
-.agechart .aclbl{font-size:13.5px;color:#3a4b59}.agechart .aclbl b{color:var(--jade)}
+.agechart .acmain{flex:1;min-width:0}
+.agechart .aclbl{font-size:13.5px;color:#3a4b59;margin-bottom:9px}.agechart .aclbl b{color:var(--jade)}
+.agechart .actrack{height:12px;background:#e4eef7;border-radius:7px;overflow:hidden}
+.agechart .acfill{display:block;height:100%;border-radius:7px;background:linear-gradient(90deg,#3ba3f0,#f6b40c)}
 .age-note{max-width:560px;margin:12px auto 0;text-align:center;font-size:12.5px;color:#5f7585;background:#eaf4fd;border-radius:10px;padding:9px 14px}
 </style>
 </head>
@@ -367,7 +369,7 @@ h2.t{color:var(--jade);font-size:24px;margin-bottom:4px}
 <div class="appbar">
   <span class="logo">樂學小書包<small>V2 · 貼紙收集冊</small></span>
   <span class="spacer"></span>
-  <span class="medalcount" onclick="openGrowth()">🏅 <b id="ptCount">0</b> 枚 · 收集冊</span>
+  <span class="medalcount" onclick="openGrowth()"><b id="ptCount">0</b> 枚 · 收集冊</span>
   <span class="acct" id="acct">未訂閱</span>
 </div>
 <div class="stage">
@@ -412,7 +414,7 @@ h2.t{color:var(--jade);font-size:24px;margin-bottom:4px}
         <div class="bcard"><img src="benefit_giftbox.png" alt="實體成長禮盒" loading="lazy">
           <div class="bcap"><span class="bt">實體成長禮盒</span><span class="tag addon">另購 $49 · 年訂價 $39</span></div></div>
       </div>
-      <div style="text-align:center;margin-top:20px"><button class="btn primary" style="width:auto;display:inline-block;padding:11px 24px" onclick="openWSDemo()">👀 看一張繪本作業長什麼樣</button></div>
+      <div style="text-align:center;margin-top:20px"><button class="btn primary" style="width:auto;display:inline-block;padding:11px 24px" onclick="openWSDemo()">看一張繪本作業長什麼樣</button></div>
       <p style="text-align:center;font-size:12px;color:#a59c86;margin-top:14px">※ 影片課程、繪本作業依購買範圍提供（訂閱與課程包共享）；小書包成長冊（PDF 作業彙編）為年訂閱專享；實體成長禮盒為選購加購（$49；年訂閱會員優惠價 $39）。</p>
     </div>
 
@@ -428,19 +430,19 @@ h2.t{color:var(--jade);font-size:24px;margin-bottom:4px}
       </div>
 
       <div style="margin-top:40px">
-        <div class="sub-h">🎯 孩子幾歲，聽什麼</div>
+        <div class="sub-h">孩子幾歲，聽什麼</div>
         <div class="lp-hsub">從睡前故事到思辨表達，一路陪到 15 歲。</div>
         <div class="agechart">
-          <div class="acr"><span class="acage">4–6 歲</span><span class="acbar" style="width:24%"></span><span class="aclbl">🌙 <b>晚安小書包</b>（睡前・品格・聽覺啟蒙）</span></div>
-          <div class="acr"><span class="acage">6–9 歲</span><span class="acbar" style="width:42%"></span><span class="aclbl">🌙 晚安 ＋ ✨ 故事 ＋ 📚 成語 ＋ 🌏 雙語小書包</span></div>
-          <div class="acr"><span class="acage">9–12 歲</span><span class="acbar" style="width:60%"></span><span class="aclbl">✨ 故事 ＋ 📚 成語 ＋ 📖 博學 ＋ 🌏 雙語小書包</span></div>
-          <div class="acr"><span class="acage">12–15 歲</span><span class="acbar" style="width:78%"></span><span class="aclbl">📖 <b>博學小書包</b>（詩詞・通識・思辨）</span></div>
+          <div class="acr"><span class="acage">4–6 歲</span><div class="acmain"><div class="aclbl"><b>晚安小書包</b>（睡前・品格・聽覺啟蒙）</div><div class="actrack"><span class="acfill" style="width:25%"></span></div></div></div>
+          <div class="acr"><span class="acage">6–9 歲</span><div class="acmain"><div class="aclbl">晚安 ＋ 故事 ＋ 成語 ＋ 雙語小書包</div><div class="actrack"><span class="acfill" style="width:50%"></span></div></div></div>
+          <div class="acr"><span class="acage">9–12 歲</span><div class="acmain"><div class="aclbl">故事 ＋ 成語 ＋ 博學 ＋ 雙語小書包</div><div class="actrack"><span class="acfill" style="width:75%"></span></div></div></div>
+          <div class="acr"><span class="acage">12–15 歲</span><div class="acmain"><div class="aclbl"><b>博學小書包</b>（詩詞・通識・跨域思辨）</div><div class="actrack"><span class="acfill" style="width:100%"></span></div></div></div>
         </div>
-        <div class="age-note">📝 家長充電站全程陪伴家長　·　🌏 雙語小書包橫跨 6–12 歲</div>
+        <div class="age-note">家長充電站全程陪伴家長　·　雙語小書包橫跨 6–12 歲</div>
       </div>
 
       <div style="margin-top:40px">
-        <div class="sub-h">📈 從小書僮，升到小書包狀元</div>
+        <div class="sub-h">從小書僮，升到小書包狀元</div>
         <div class="lp-hsub">完成繪本作業就升級。</div>
         <div class="lvls">
           <div class="lvl-node"><div class="ring"><img src="level1.png" alt="小書僮"></div><div class="nm">小書僮</div></div>
@@ -456,22 +458,22 @@ h2.t{color:var(--jade);font-size:24px;margin-bottom:4px}
       </div>
 
       <div style="margin-top:40px">
-        <div class="sub-h">🧸 孩子最愛：收集歷史人物、成語與品德貼紙</div>
+        <div class="sub-h">孩子最愛：收集歷史人物、成語與品德貼紙</div>
         <div class="lp-hsub">完成作業就能蒐集貼紙、貼進收集冊——越集越上癮，孩子自己追著學。</div>
         <div class="sticker-duo">
-          <div class="sticker-card"><img src="collect_online.png" alt="App 內線上收集貼紙" loading="lazy"><div class="cardlabel">📱 App 內・線上收集</div></div>
-          <div class="sticker-card"><div class="sticker-ribbon">實體成長禮盒</div><img src="collect_stickers.png" alt="實體貼紙包與收集冊" loading="lazy"><div class="cardlabel">📦 實體貼紙・貼進成長冊</div></div>
+          <div class="sticker-card"><img src="collect_online.png" alt="App 內線上收集貼紙" loading="lazy"><div class="cardlabel">App 內・線上收集</div></div>
+          <div class="sticker-card"><div class="sticker-ribbon">實體成長禮盒</div><img src="collect_stickers.png" alt="實體貼紙包與收集冊" loading="lazy"><div class="cardlabel">實體貼紙・貼進成長冊</div></div>
         </div>
       </div>
 
       <div style="margin-top:40px">
-        <div class="sub-h">👨‍👩‍👧 親子一起學的氛圍</div>
+        <div class="sub-h">親子一起學的氛圍</div>
         <div class="lp-hsub">不是把孩子丟給螢幕，而是創造你和孩子一起讀、一起完成、一起收集的時光。</div>
         <div class="coearn">
-          <div class="ce"><div class="em">💬</div><h5>親子共讀題</h5><p>每張繪本作業都附給家長的延伸提問</p></div>
-          <div class="ce"><div class="em">📝</div><h5>家長充電站</h5><p>教養方法短片，陪孩子一起成長</p></div>
-          <div class="ce" onclick="openReport()" style="cursor:pointer"><div class="em">📬</div><h5>成長週報</h5><p>每週告訴你孩子學會了什麼<br><b style="color:var(--gold)">點我預覽</b></p></div>
-          <div class="ce"><div class="em">🏅</div><h5>一起貼貼紙</h5><p>線上集點、線下貼進實體成長冊</p></div>
+          <div class="ce"><h5>親子共讀題</h5><p>每張繪本作業都附給家長的延伸提問</p></div>
+          <div class="ce"><h5>家長充電站</h5><p>教養方法短片，陪孩子一起成長</p></div>
+          <div class="ce" onclick="openReport()" style="cursor:pointer"><h5>成長週報</h5><p>每週告訴你孩子學會了什麼<br><b style="color:var(--gold)">點我預覽</b></p></div>
+          <div class="ce"><h5>一起貼貼紙</h5><p>線上集點、線下貼進實體成長冊</p></div>
         </div>
       </div>
     </div>
@@ -481,9 +483,9 @@ h2.t{color:var(--jade);font-size:24px;margin-bottom:4px}
       <div class="lp-h">為什麼家長選樂學小書包</div>
       <div class="lp-hsub">不是「更多影片」，而是一套孩子聽得進、家長看得到成長的乾淨內容學堂。</div>
       <div class="lp-3">
-        <div class="lp-card"><div class="em">🧹</div><h4>乾淨・安全</h4><p>無廣告、無演算法誘導、內容經審。把螢幕時間，變成放心的學習時間。</p></div>
-        <div class="lp-card"><div class="em">🗺️</div><h4>有體系</h4><p>4–15 歲分齡分級，從睡前故事到閱讀素養循序漸進，每集標好學到什麼。</p></div>
-        <div class="lp-card"><div class="em">🏅</div><h4>邊學邊集</h4><p>每堂課配繪本作業與貼紙，孩子主動想完成，人物圖鑑與成長看得見、摸得到。</p></div>
+        <div class="lp-card"><h4>乾淨・安全</h4><p>無廣告、無演算法誘導、內容經審。把螢幕時間，變成放心的學習時間。</p></div>
+        <div class="lp-card"><h4>有體系</h4><p>4–15 歲分齡分級，從睡前故事到閱讀素養循序漸進，每集標好學到什麼。</p></div>
+        <div class="lp-card"><h4>邊學邊集</h4><p>每堂課配繪本作業與貼紙，孩子主動想完成，人物圖鑑與成長看得見、摸得到。</p></div>
       </div>
     </div>
 
@@ -506,13 +508,13 @@ h2.t{color:var(--jade);font-size:24px;margin-bottom:4px}
           <ul class="ul"><li>單一系列完整解鎖</li><li>含全系列繪本作業 PDF</li><li>永久擁有，無時限</li><li>適合先試水溫</li></ul>
           <button class="pbtn line" onclick="subscribe('課程包')">選購課程包</button></div>
         <div class="tier feat"><span class="pill">最划算</span><h4>年訂閱</h4><div class="amt">$88<small>/年</small></div>
-          <ul class="ul"><li>全 6 線 150 集免廣告</li><li>全套繪本作業（每集一張）</li><li>小書包成長冊（150 份作業彙編）</li><li>成長任務・勳章・收集冊</li><li>🎁 實體成長禮盒可優惠加購 $39（寄到家）</li></ul>
+          <ul class="ul"><li>全 6 線 150 集免廣告</li><li>全套繪本作業（每集一張）</li><li>小書包成長冊（150 份作業彙編）</li><li>成長任務・勳章・收集冊</li><li>實體成長禮盒可優惠加購 $39（寄到家）</li></ul>
           <button class="pbtn solid" onclick="subscribe('年訂閱')">開始 7 天免費試用</button></div>
         <div class="tier"><h4>月訂閱</h4><div class="amt">$9.99<small>/月</small></div>
           <ul class="ul"><li>全 6 線暢看</li><li>含全套繪本作業</li><li>低門檻入場</li><li>隨時取消</li></ul>
           <button class="pbtn line" onclick="subscribe('月訂閱')">開始月訂閱</button></div>
       </div>
-      <div class="lp-trial">🎁 新用戶享 7 天免費試用，試用期內可隨時取消，不收費。</div>
+      <div class="lp-trial">新用戶享 7 天免費試用，試用期內可隨時取消，不收費。</div>
       <div class="faq">
         <div class="qa"><div class="q">適合幾歲的孩子？</div><div class="a">4–15 歲。六條分齡產品線，從睡前故事到通識思辨都有對應內容。</div></div>
         <div class="qa"><div class="q">繪本作業怎麼用？</div><div class="a">每集一張可下載列印的 PDF；孩子完成後在 App 標記，即可集勳章與貼紙。</div></div>
@@ -560,7 +562,7 @@ h2.t{color:var(--jade);font-size:24px;margin-bottom:4px}
     <div class="tier feat" onclick="subscribe('年訂閱')"><span class="pill">最划算</span><h4>年訂閱</h4><div class="amt">$88<small>/年</small></div><div class="note">全 6 線 150 集<br>月均約 $7.3</div></div>
     <div class="tier" onclick="subscribe('月訂閱')"><h4>月訂閱</h4><div class="amt">$9.99<small>/月</small></div><div class="note">全 6 線暢看<br>隨時取消</div></div>
   </div>
-  <div class="trybar">🎁 新用戶：7 天免費試用，期內可隨時取消，不收費。</div>
+  <div class="trybar">新用戶：7 天免費試用，期內可隨時取消，不收費。</div>
 </div></div>
 
 <!-- PLAYER -->
