@@ -354,10 +354,11 @@ h2.t{color:var(--jade);font-size:24px;margin-bottom:4px}
 .coearn .ce{background:linear-gradient(180deg,#eaf4fd,#f6fbff);border:1px solid #cfe2f2;border-radius:14px;padding:18px 14px;text-align:center}
 .coearn .ce .em{font-size:28px}.coearn .ce h5{color:var(--jade);font-size:14px;margin:8px 0 5px}.coearn .ce p{font-size:12.5px;color:#3f5a4c;margin:0;line-height:1.5}
 .sub-h{font-size:18px;color:var(--jade);font-weight:800;text-align:center;margin-bottom:4px}
-.agelad{max-width:560px;margin:6px auto 0;display:flex;flex-direction:column;gap:10px}
-.agelad .ar{display:flex;align-items:center;gap:14px;background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:12px 16px}
-.agelad .age{flex:0 0 auto;min-width:70px;text-align:center;font-weight:800;color:#fff;background:linear-gradient(135deg,#1593ee,#0e6fc4);border-radius:20px;padding:5px 10px;font-size:13px}
-.agelad .ad{font-size:14px;color:#3a4b59}.agelad .ad b{color:var(--jade)}
+.agechart{max-width:700px;margin:8px auto 0;display:flex;flex-direction:column;gap:10px}
+.agechart .acr{display:flex;align-items:center;gap:12px;background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:13px 16px}
+.agechart .acage{flex:0 0 auto;min-width:66px;font-weight:800;color:var(--jade);font-size:14px}
+.agechart .acbar{flex:0 0 auto;height:14px;border-radius:7px;background:linear-gradient(90deg,#3ba3f0,#f6b40c)}
+.agechart .aclbl{font-size:13.5px;color:#3a4b59}.agechart .aclbl b{color:var(--jade)}
 .age-note{max-width:560px;margin:12px auto 0;text-align:center;font-size:12.5px;color:#5f7585;background:#eaf4fd;border-radius:10px;padding:9px 14px}
 </style>
 </head>
@@ -429,13 +430,13 @@ h2.t{color:var(--jade);font-size:24px;margin-bottom:4px}
       <div style="margin-top:40px">
         <div class="sub-h">🎯 孩子幾歲，聽什麼</div>
         <div class="lp-hsub">從睡前故事到思辨表達，一路陪到 15 歲。</div>
-        <div class="agelad">
-          <div class="ar"><span class="age">4–6 歲</span><span class="ad"><b>睡前故事</b>，聽出好品格與安全感</span></div>
-          <div class="ar"><span class="age">6–9 歲</span><span class="ad"><b>傳統故事＋成語入門</b>，愛上閱讀</span></div>
-          <div class="ar"><span class="age">9–12 歲</span><span class="ad"><b>歷史人物・閱讀素養</b>，累積文化底蘊</span></div>
-          <div class="ar"><span class="age">12–15 歲</span><span class="ad"><b>詩詞通識・思辨表達</b>，談吐有內涵</span></div>
+        <div class="agechart">
+          <div class="acr"><span class="acage">4–6 歲</span><span class="acbar" style="width:24%"></span><span class="aclbl">🌙 <b>晚安小書包</b>（睡前・品格・聽覺啟蒙）</span></div>
+          <div class="acr"><span class="acage">6–9 歲</span><span class="acbar" style="width:42%"></span><span class="aclbl">🌙 晚安 ＋ ✨ 故事 ＋ 📚 成語 ＋ 🌏 雙語小書包</span></div>
+          <div class="acr"><span class="acage">9–12 歲</span><span class="acbar" style="width:60%"></span><span class="aclbl">✨ 故事 ＋ 📚 成語 ＋ 📖 博學 ＋ 🌏 雙語小書包</span></div>
+          <div class="acr"><span class="acage">12–15 歲</span><span class="acbar" style="width:78%"></span><span class="aclbl">📖 <b>博學小書包</b>（詩詞・通識・思辨）</span></div>
         </div>
-        <div class="age-note">🌏 雙語故事橫跨 6–12 歲，從熟悉的故事自然學英文</div>
+        <div class="age-note">📝 家長充電站全程陪伴家長　·　🌏 雙語小書包橫跨 6–12 歲</div>
       </div>
 
       <div style="margin-top:40px">
